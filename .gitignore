@@ -6,3 +6,4 @@ instance/
 *.db
 games_meetup.txt
 LOCAL_DEPLOYMENT.md
+.vscode/*
