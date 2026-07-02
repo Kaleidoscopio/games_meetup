@@ -15,7 +15,9 @@ On \Environment
 Optionally set a variable called PYTHON_VERSION to 3.13 (it's already mentioned on .python-version file)
 
 Set the Start Command to:
-		gunicorn app:app --workers=1	(Only one worker to prevent issues with background scheduler)
+		gunicorn app:app --workers=2
+	or
+		gunicorn app:app --workers=2 --threads=2	(if supported by your tier)
 
 ## Database Hosting
 

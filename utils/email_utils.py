@@ -10,13 +10,22 @@ raising an error - this keeps the app fully runnable with zero setup.
 from flask import current_app, render_template
 from flask_mail import Message as MailMessage
 from flask_babel import gettext as _ 
-
+from threading import Thread
 from extensions import mail
+
+#   Helpers for sending emails asynchronously in a background thread.
+def send_async_email(app, msg):
+    with app.app_context():
+        try:
+            mail.send(msg)
+        except Exception as exc:
+            # Move the error logger here since the thread executes independently
+            app.logger.error(f"Failed to send async email to {msg.recipients}: {exc}")
 
 
 def send_email(subject: str, recipients: list[str], html_body: str, attachments: list[tuple] | None = None) -> None:
     """
-    Send an HTML email.
+    Send an HTML email asynchronously.
 
     attachments: optional list of (filename, mimetype, data) tuples,
     used for attaching .ics calendar invites.
@@ -35,10 +44,11 @@ def send_email(subject: str, recipients: list[str], html_body: str, attachments:
         for filename, mimetype, data in attachments:
             msg.attach(filename, mimetype, data)
 
-    try:
-        mail.send(msg)
-    except Exception as exc:  # pragma: no cover - defensive, don't crash user requests
-        current_app.logger.error(f"Failed to send email to {recipients}: {exc}")
+    # 1. Fetch the real application instance out of the current_app proxy wrapper
+    app = current_app._get_current_object()
+
+    # 2. Spawn and start the background thread, passing the app instance and message payload
+    Thread(target=send_async_email, args=(app, msg)).start()
 
 
 def send_password_reset_email(user, reset_url: str) -> None:

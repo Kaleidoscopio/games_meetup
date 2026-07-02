@@ -41,6 +41,14 @@ class Config:
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
+    # SQLAlchemy Engine Options to prevent broken/stale DB socket connections
+    SQLALCHEMY_ENGINE_OPTIONS = {
+        "pool_pre_ping": True,   # Verifies connection health prior to executing queries
+        "pool_recycle": 1800,    # Forces recycling of connections older than 30 minutes
+        "pool_size": 10,         # Keeps a baseline size for your connection pool
+        "max_overflow": 5,       # Allows overflow connections during brief spikes
+    }
+
     # --- Sessions ----------------------------------------------------------
     PERMANENT_SESSION_LIFETIME = timedelta(days=14)
     REMEMBER_COOKIE_DURATION = timedelta(days=14)
