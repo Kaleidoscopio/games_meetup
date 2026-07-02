@@ -8,6 +8,7 @@ from datetime import datetime
 
 from flask import Blueprint, render_template, redirect, url_for, flash, request, current_app
 from flask_login import login_user, logout_user, login_required, current_user
+from flask_babel import _
 
 from extensions import db
 from models import User
@@ -27,10 +28,10 @@ def register():
         # Uniqueness checks beyond the DB constraint, so we can show a
         # friendly message instead of a raw integrity error.
         if User.query.filter_by(email=form.email.data.lower()).first():
-            flash("An account with that email already exists.", "danger")
+            flash(_("An account with that email already exists."), "danger")
             return render_template("auth/register.html", form=form)
         if User.query.filter_by(username=form.username.data).first():
-            flash("That username is taken, please choose another.", "danger")
+            flash(_("That username is taken, please choose another."), "danger")
             return render_template("auth/register.html", form=form)
 
         user = User(username=form.username.data.strip(), email=form.email.data.lower().strip())
@@ -51,7 +52,7 @@ def register():
         db.session.commit()
 
         login_user(user)
-        flash("Welcome to Games Meetup! Your account has been created.", "success")
+        flash(_("Welcome to Games Meetup! Your account has been created."), "success")
         return redirect(url_for("listings.browse"))
 
     return render_template("auth/register.html", form=form)
@@ -66,12 +67,12 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data.lower().strip()).first()
         if user is None or not user.check_password(form.password.data):
-            flash("Invalid email or password.", "danger")
+            flash(_("Invalid email or password."), "danger")
             return render_template("auth/login.html", form=form)
 
         remember = bool(request.form.get("remember_me"))
         login_user(user, remember=remember)
-        flash(f"Welcome back, {user.username}!", "success")
+        flash(_("Welcome back, {user.username}!"), "success")
 
         next_page = request.args.get("next")
         return redirect(next_page or url_for("listings.browse"))
@@ -83,7 +84,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    flash("You have been logged out.", "info")
+    flash(_("You have been logged out."), "info")
     return redirect(url_for("auth.login"))
 
 
@@ -100,7 +101,7 @@ def forgot_password():
             reset_url = url_for("auth.reset_password", token=token, _external=True)
             send_password_reset_email(user, reset_url)
 
-        flash("If that email is registered, a reset link has been sent.", "info")
+        flash(_("If that email is registered, a reset link has been sent."), "info")
         return redirect(url_for("auth.login"))
 
     return render_template("auth/forgot_password.html", form=form)
@@ -110,7 +111,7 @@ def forgot_password():
 def reset_password(token):
     user = User.query.filter_by(reset_token=token).first()
     if user is None or not user.verify_reset_token(token):
-        flash("That password reset link is invalid or has expired.", "danger")
+        flash(_("That password reset link is invalid or has expired."), "danger")
         return redirect(url_for("auth.forgot_password"))
 
     form = ResetPasswordForm()
@@ -118,7 +119,7 @@ def reset_password(token):
         user.set_password(form.password.data)
         user.clear_reset_token()
         db.session.commit()
-        flash("Your password has been reset. Please log in.", "success")
+        flash(_("Your password has been reset. Please log in."), "success")
         return redirect(url_for("auth.login"))
 
     return render_template("auth/reset_password.html", form=form, token=token)

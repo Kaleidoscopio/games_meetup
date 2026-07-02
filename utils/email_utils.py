@@ -9,6 +9,7 @@ raising an error - this keeps the app fully runnable with zero setup.
 
 from flask import current_app, render_template
 from flask_mail import Message as MailMessage
+from flask_babel import lazy_gettext as _l
 
 from extensions import mail
 
@@ -37,18 +38,18 @@ def send_email(subject: str, recipients: list[str], html_body: str, attachments:
     try:
         mail.send(msg)
     except Exception as exc:  # pragma: no cover - defensive, don't crash user requests
-        current_app.logger.error(f"Failed to send email to {recipients}: {exc}")
+        current_app.logger.error(_l(f"Failed to send email to {recipients}: {exc}"))
 
 
 def send_password_reset_email(user, reset_url: str) -> None:
     html = render_template("email/reset_password.html", user=user, reset_url=reset_url)
-    send_email("Reset your Games Meetup password", [user.email], html)
+    send_email(_l("Reset your Games Meetup password"), [user.email], html)
 
 
 def send_listing_closed_email(listing, recipients: list[str], ics_bytes: bytes, auto_closed: bool) -> None:
     html = render_template("email/listing_closed.html", listing=listing, auto_closed=auto_closed)
-    subject = f"Your game '{listing.game_name}' is confirmed" if not auto_closed else \
-        f"Listing '{listing.game_name}' was automatically closed"
+    subject = _l(f"Your game '{listing.game_name}' is confirmed") if not auto_closed else \
+        _l(f"Listing '{listing.game_name}' was automatically closed")
     send_email(
         subject,
         recipients,
@@ -59,9 +60,9 @@ def send_listing_closed_email(listing, recipients: list[str], ics_bytes: bytes, 
 
 def send_new_enrollment_email(listing, organiser_email: str, player_username: str) -> None:
     html = render_template("email/new_enrollment.html", listing=listing, player_username=player_username)
-    send_email(f"New player joined '{listing.game_name}'", [organiser_email], html)
+    send_email(_l(f"New player joined '{listing.game_name}'"), [organiser_email], html)
 
 
 def send_new_message_email(recipient, sender, listing=None) -> None:
     html = render_template("email/new_message.html", recipient=recipient, sender=sender, listing=listing)
-    send_email(f"New message from {sender.username} on Games Meetup", [recipient.email], html)
+    send_email(_l(f"New message from {sender.username} on Games Meetup"), [recipient.email], html)

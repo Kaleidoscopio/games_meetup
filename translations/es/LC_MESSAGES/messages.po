@@ -1,13 +1,14 @@
 # Spanish translations for Games Meetup.
 # Copyright (C) 2026 ORGANIZATION
-# This file is distributed under the same license as the Games Meetup project.
+# This file is distributed under the same license as the Games Meetup
+# project.
 # Daniel Almeida gamesmeetuppt@gmail.com, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Games Meetup 1.0\n"
 "Report-Msgid-Bugs-To: gamesmeetuppt@gmail.com\n"
-"POT-Creation-Date: 2026-07-02 16:00+0100\n"
+"POT-Creation-Date: 2026-07-02 17:56+0100\n"
 "PO-Revision-Date: 2026-07-02 16:00+0100\n"
 "Last-Translator: Daniel Almeida <gamesmeetuppt@gmail.com>\n"
 "Language: es\n"
@@ -18,41 +19,170 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: templates/base.html:17 templates/base.html:41
+#: blueprints/admin.py:66
+msgid "Hobby shop added."
+msgstr "Tienda de juegos añadida."
+
+#: blueprints/admin.py:80
+#, python-brace-format
+msgid "{shop.name} is now {'active' if shop.active else 'inactive'}."
+msgstr "{shop.name} ahora está {'activa' if shop.active else 'inactiva'}."
+
+#: blueprints/admin.py:90
+msgid "Can't delete a shop that has listings - deactivate it instead."
+msgstr "No se puede eliminar una tienda que tiene anuncios; desactívala en su lugar."
+
+#: blueprints/admin.py:94
+msgid "Hobby shop deleted."
+msgstr "Tienda de juegos eliminada."
+
+#: blueprints/admin.py:114
+msgid "You can't change your own admin status."
+msgstr "No puedes cambiar tu propio estado de administrador."
+
+#: blueprints/admin.py:118
+#, python-brace-format
+msgid "{user.username} admin status: {user.is_admin}."
+msgstr "Estado de administrador de {user.username}: {user.is_admin}."
+
+#: blueprints/admin.py:128
+msgid "You can't delete your own account from here."
+msgstr "No puedes eliminar tu propia cuenta desde aquí."
+
+#: blueprints/admin.py:132
+msgid "User deleted."
+msgstr "Usuario eliminado."
+
+#: blueprints/admin.py:154
+msgid "Listing force-closed."
+msgstr "Cierre forzado del anuncio realizado."
+
+#: blueprints/admin.py:165
+msgid "Listing deleted."
+msgstr "Anuncio eliminado."
+
+#: blueprints/auth.py:31
+msgid "An account with that email already exists."
+msgstr "Ya existe una cuenta con ese correo electrónico."
+
+#: blueprints/auth.py:34
+msgid "That username is taken, please choose another."
+msgstr "Ese nombre de usuario ya está ocupado, por favor elige otro."
+
+#: blueprints/auth.py:55
+msgid "Welcome to Games Meetup! Your account has been created."
+msgstr "¡Bienvenido a Games Meetup! Tu cuenta ha sido creada."
+
+#: blueprints/auth.py:70
+msgid "Invalid email or password."
+msgstr "Correo electrónico o contraseña inválidos."
+
+#: blueprints/auth.py:75
+#, python-brace-format
+msgid "Welcome back, {user.username}!"
+msgstr "¡Bienvenido de nuevo, {user.username}!"
+
+#: blueprints/auth.py:87
+msgid "You have been logged out."
+msgstr "Has cerrado sesión correctamente."
+
+#: blueprints/auth.py:104
+msgid "If that email is registered, a reset link has been sent."
+msgstr "Si ese correo está registrado, se ha enviado un enlace de restablecimiento."
+
+#: blueprints/auth.py:114
+msgid "That password reset link is invalid or has expired."
+msgstr "Ese enlace de restablecimiento de contraseña no es válido o ha caducado."
+
+#: blueprints/auth.py:122
+msgid "Your password has been reset. Please log in."
+msgstr "Tu contraseña ha sido restablecida. Por favor, inicia sesión."
+
+#: blueprints/listings.py:75
+msgid "Please select a hobby shop, or switch to a free-text location."
+msgstr "Por favor, selecciona una tienda de juegos o cambia a una ubicación de texto libre."
+
+#: blueprints/listings.py:108
+msgid "Listing published!"
+msgstr "¡Anuncio publicado!"
+
+#: blueprints/listings.py:134
+msgid "This listing is no longer open."
+msgstr "Este anuncio ya no está abierto."
+
+#: blueprints/listings.py:138
+msgid "You can't join your own listing."
+msgstr "No puedes unirte a tu propio anuncio."
+
+#: blueprints/listings.py:142
+msgid "Sorry, this listing is already full."
+msgstr "Lo sentimos, este anuncio ya está completo."
+
+#: blueprints/listings.py:146
+msgid "You're already enrolled in this listing."
+msgstr "Ya estás inscrito en este anuncio."
+
+#: blueprints/listings.py:159
+msgid "You're in! The organiser has been notified."
+msgstr "¡Ya estás dentro! El organizador ha sido notificado."
+
+#: blueprints/listings.py:169
+msgid ""
+"You're the organiser, so you can't leave your own listing - close it "
+"instead."
+msgstr "Eres el organizador, así que no puedes salir de tu propio anuncio; ciérralo en su lugar."
+
+#: blueprints/listings.py:176
+msgid "You've left this listing."
+msgstr "Has salido de este anuncio."
+
+#: blueprints/listings.py:193
+msgid "This listing is already closed."
+msgstr "Este anuncio ya está cerrado."
+
+#: blueprints/listings.py:209
+msgid "Listing closed and calendar invites sent to all players."
+msgstr "Anuncio cerrado e invitaciones de calendario enviadas a todos los jugadores."
+
+#: templates/base.html:18
+msgid "Language"
+msgstr "Idioma"
+
+#: templates/base.html:27 templates/base.html:53
 msgid "Browse"
 msgstr "Buscar"
 
-#: templates/base.html:18
+#: templates/base.html:28
 msgid "New listing"
 msgstr "Crear anuncio"
 
-#: templates/base.html:19 templates/base.html:50
+#: templates/base.html:29 templates/base.html:62
 #: templates/messaging/inbox.html:2 templates/messaging/inbox.html:4
 msgid "Messages"
 msgstr "Mensajes"
 
-#: templates/admin/users.html:7 templates/base.html:20 templates/base.html:54
+#: templates/admin/users.html:7 templates/base.html:32 templates/base.html:67
 msgid "Admin"
 msgstr "Administración"
 
-#: templates/base.html:21
+#: templates/base.html:33
 msgid "Log out"
 msgstr "Cerrar sesión"
 
-#: templates/base.html:44 templates/messaging/inbox.html:17
+#: templates/base.html:56 templates/messaging/inbox.html:17
 msgid "New"
 msgstr "Nuevo"
 
-#: templates/base.html:47 templates/listings/my_listings.html:2
+#: templates/base.html:59 templates/listings/my_listings.html:2
 #: templates/listings/my_listings.html:4
 msgid "My games"
 msgstr "Mis partidas"
 
-#: templates/base.html:61
+#: templates/base.html:74
 msgid "built by Daniel Almeida"
 msgstr "desarrollado por Daniel Almeida"
 
-#: templates/base.html:64
+#: templates/base.html:77
 msgid "Contact the admin"
 msgstr "Contactar con el administrador"
 
@@ -62,7 +192,9 @@ msgstr "Encuentra tu próxima partida"
 
 #: templates/index.html:6
 msgid "Find players. Arrange games. Online or at your local hobby shop."
-msgstr "Encuentra jugadores. Organiza partidas. En línea o en tu tienda de juegos local."
+msgstr ""
+"Encuentra jugadores. Organiza partidas. En línea o en tu tienda de juegos"
+" local."
 
 #: templates/index.html:8
 msgid "Create a free account"
@@ -81,11 +213,15 @@ msgstr "Cómo funciona"
 msgid ""
 "1. Post a listing with your game, date/time, location and how many "
 "players you need."
-msgstr "1. Publica un anuncio con tu juego, fecha/hora, lugar y cuántos jugadores necesitas."
+msgstr ""
+"1. Publica un anuncio con tu juego, fecha/hora, lugar y cuántos jugadores"
+" necesitas."
 
 #: templates/index.html:16
 msgid "2. Other players can enroll and add notes (faction, deck, character, etc)."
-msgstr "2. Otros jugadores pueden inscribirse y añadir notas (facción, baraja, personaje, etc)."
+msgstr ""
+"2. Otros jugadores pueden inscribirse y añadir notas (facción, baraja, "
+"personaje, etc)."
 
 #: templates/index.html:17
 msgid "3. Message each other to sort out the details."
@@ -93,7 +229,9 @@ msgstr "3. Enviaos mensajes para acordar los detalles."
 
 #: templates/index.html:18
 msgid "4. Close the listing once it's arranged - everyone gets a calendar invite."
-msgstr "4. Cierra el anuncio una vez organizado: todos recibirán una invitación de calendario."
+msgstr ""
+"4. Cierra el anuncio una vez organizado: todos recibirán una invitación "
+"de calendario."
 
 #: templates/admin/dashboard.html:2
 msgid "Admin - Games Meetup"
@@ -149,7 +287,9 @@ msgstr "días"
 
 #: templates/admin/dashboard.html:26
 msgid "after their game date by a background job that checks every hour."
-msgstr "después de la fecha de la partida mediante una tarea en segundo plano que comprueba cada hora."
+msgstr ""
+"después de la fecha de la partida mediante una tarea en segundo plano que"
+" comprueba cada hora."
 
 #: templates/admin/listings.html:2
 msgid "Manage listings - Admin"
@@ -200,7 +340,7 @@ msgstr "Añadir una tienda"
 msgid "Name"
 msgstr "Nombre"
 
-#: templates/admin/shops.html:28
+#: templates/admin/shops.html:28 templates/listings/list.html:13
 msgid "Region"
 msgstr "Región"
 
@@ -258,7 +398,9 @@ msgstr "Restablecer tu contraseña"
 
 #: templates/auth/forgot_password.html:6
 msgid "Enter your account email and we'll send you a link to reset your password."
-msgstr "Introduce el correo de tu cuenta y te enviaremos un enlace para restablecer tu contraseña."
+msgstr ""
+"Introduce el correo de tu cuenta y te enviaremos un enlace para "
+"restablecer tu contraseña."
 
 #: templates/auth/forgot_password.html:16
 msgid "Back to login"
@@ -330,13 +472,17 @@ msgstr "se ha cerrado automáticamente porque la fecha de la partida ya ha pasad
 
 #: templates/email/listing_closed.html:5
 msgid "has been confirmed and closed by the organiser. Your game is on!"
-msgstr "ha sido confirmado y cerrado por el organizador. ¡Tu partida está en marcha!"
+msgstr ""
+"ha sido confirmado y cerrado por el organizador. ¡Tu partida está en "
+"marcha!"
 
 #: templates/email/listing_closed.html:13
 msgid ""
 "A calendar invite (.ics file) is attached - open it to add the game to "
 "your calendar."
-msgstr "Se adjunta una invitación de calendario (archivo .ics); ábrela para añadir la partida a tu calendario."
+msgstr ""
+"Se adjunta una invitación de calendario (archivo .ics); ábrela para "
+"añadir la partida a tu calendario."
 
 #: templates/email/new_enrollment.html:2
 msgid "just joined your listing"
@@ -348,7 +494,9 @@ msgstr "Plazas ocupadas:"
 
 #: templates/email/new_enrollment.html:4
 msgid "Log in to Games Meetup to message them and sort out the details."
-msgstr "Inicia sesión en Games Meetup para enviarles un mensaje y coordinar los detalles."
+msgstr ""
+"Inicia sesión en Games Meetup para enviarles un mensaje y coordinar los "
+"detalles."
 
 #: templates/email/new_message.html:1 templates/email/reset_password.html:1
 msgid "Hi"
@@ -374,7 +522,10 @@ msgstr "Inicia sesión en Games Meetup para leer y responder."
 msgid ""
 "We received a request to reset your Games Meetup password. Click the link"
 " below to choose a new one. This link expires in 30 minutes."
-msgstr "Hemos recibido una solicitud para restablecer tu contraseña de Games Meetup. Haz clic en el enlace de abajo para elegir una nueva. Este enlace caduca en 30 minutos."
+msgstr ""
+"Hemos recibido una solicitud para restablecer tu contraseña de Games "
+"Meetup. Haz clic en el enlace de abajo para elegir una nueva. Este enlace"
+" caduca en 30 minutos."
 
 #: templates/email/reset_password.html:3
 msgid "Reset my password"
@@ -382,7 +533,9 @@ msgstr "Restablecer mi contraseña"
 
 #: templates/email/reset_password.html:4
 msgid "If you didn't request this, you can safely ignore this email."
-msgstr "Si no has solicitado esto, puedes ignorar este correo electrónico de forma segura."
+msgstr ""
+"Si no has solicitado esto, puedes ignorar este correo electrónico de "
+"forma segura."
 
 #: templates/errors/403.html:2 templates/errors/403.html:5
 msgid "Access denied"
@@ -420,7 +573,9 @@ msgstr "Formato de 24 horas, ej: 19:30"
 msgid ""
 "Don't see your shop? Ask an admin to add it, or switch to a personalized "
 "location."
-msgstr "¿No ves tu tienda? Pide a un administrador que la añada o cambia a una ubicación personalizada."
+msgstr ""
+"¿No ves tu tienda? Pide a un administrador que la añada o cambia a una "
+"ubicación personalizada."
 
 #: templates/listings/create.html:41
 msgid "e.g. Online (Discord), or a street address"
@@ -463,7 +618,9 @@ msgstr "Acciones del organizador"
 msgid ""
 "Once you've arranged the game, close the listing to notify everyone and "
 "send calendar invites."
-msgstr "Una vez organizada la partida, cierra el anuncio para notificar a todos y enviar las invitaciones de calendario."
+msgstr ""
+"Una vez organizada la partida, cierra el anuncio para notificar a todos y"
+" enviar las invitaciones de calendario."
 
 #: templates/listings/detail.html:49
 msgid "Close listing &amp; send invites"
@@ -500,6 +657,22 @@ msgstr "Buscar partidas"
 #: templates/listings/list.html:4
 msgid "Open games"
 msgstr "Partidas abiertas"
+
+#: templates/listings/list.html:9
+msgid "Game name"
+msgstr "Nombre del juego"
+
+#: templates/listings/list.html:10
+msgid "e.g. Catan, Warhammer..."
+msgstr "ej: Catan, Warhammer..."
+
+#: templates/listings/list.html:14
+msgid "e.g. Lisbon"
+msgstr "ej: Madrid"
+
+#: templates/listings/list.html:16
+msgid "Filter"
+msgstr "Filtrar"
 
 #: templates/listings/list.html:22
 msgid "No open listings match your filters yet."
@@ -539,13 +712,17 @@ msgstr "Anuncios a los que me he unido"
 msgid ""
 "You haven't joined any listings yet. <a href=\"{{ "
 "url_for('listings.browse') }}\">Browse open games</a>"
-msgstr "Aún no te he unido a ningún anuncio. <a href=\"{{ url_for('listings.browse') }}\">Buscar partidas abiertas</a>"
+msgstr ""
+"Aún no te he unido a ningún anuncio. <a href=\"{{ "
+"url_for('listings.browse') }}\">Buscar partidas abiertas</a>"
 
 #: templates/messaging/inbox.html:7
 msgid ""
 "No conversations yet. Message someone from a listing's player list to "
 "start one."
-msgstr "No hay conversaciones todavía. Envía un mensaje a alguien de la lista de jugadores de un anuncio para empezar una."
+msgstr ""
+"No hay conversaciones todavía. Envía un mensaje a alguien de la lista de "
+"jugadores de un anuncio para empezar una."
 
 #: templates/messaging/thread.html:2
 msgid "Chat with"
@@ -656,19 +833,25 @@ msgstr "Nombre '{name}' definido dos veces"
 #: venv/lib/python3.13/site-packages/click/core.py:3133
 #, python-brace-format
 msgid "Boolean option {decl!r} cannot use the same flag for true/false."
-msgstr "La opción booleana {decl!r} no puede usar el mismo indicador para verdadero/falso."
+msgstr ""
+"La opción booleana {decl!r} no puede usar el mismo indicador para "
+"verdadero/falso."
 
 #: venv/lib/python3.13/site-packages/click/core.py:3152
 #, python-brace-format
 msgid "Could not determine name for option with declarations {decls!r}"
-msgstr "No se pudo determinar el nombre de la opción con las declaraciones {decls!r}"
+msgstr ""
+"No se pudo determinar el nombre de la opción con las declaraciones "
+"{decls!r}"
 
 #: venv/lib/python3.13/site-packages/click/core.py:3159
 #, python-brace-format
 msgid ""
 "No options defined but a name was passed ({name}). Did you mean to "
 "declare an argument instead? Did you mean to pass '--{name}'?"
-msgstr "No se definieron opciones pero se pasó un nombre ({name}). ¿Querías declarar un argumento en su lugar? ¿Querías pasar '--{name}'?"
+msgstr ""
+"No se definieron opciones pero se pasó un nombre ({name}). ¿Querías "
+"declarar un argumento en su lugar? ¿Querías pasar '--{name}'?"
 
 #: venv/lib/python3.13/site-packages/click/core.py:3236
 #, python-brace-format
@@ -691,7 +874,9 @@ msgstr "(dinámico)"
 #: venv/lib/python3.13/site-packages/click/core.py:3600
 #, python-brace-format
 msgid "Arguments take exactly one parameter declaration, got {length}: {decls}."
-msgstr "Los argumentos requieren exactamente una declaración de parámetro, se obtuvieron {length}: {decls}."
+msgstr ""
+"Los argumentos requieren exactamente una declaración de parámetro, se "
+"obtuvieron {length}: {decls}."
 
 #: venv/lib/python3.13/site-packages/click/decorators.py:399
 msgid "Do you want to continue?"
@@ -812,11 +997,15 @@ msgstr[1] "La opción {name!r} requiere {nargs} argumentos."
 
 #: venv/lib/python3.13/site-packages/click/shell_completion.py:355
 msgid "Shell completion is not supported for Bash versions older than 4.4."
-msgstr "El autocompletado de shell no es compatible con versiones de Bash anteriores a la 4.4."
+msgstr ""
+"El autocompletado de shell no es compatible con versiones de Bash "
+"anteriores a la 4.4."
 
 #: venv/lib/python3.13/site-packages/click/shell_completion.py:362
 msgid "Couldn't detect Bash version, shell completion is not supported."
-msgstr "No se pudo detectar la versión de Bash, el autocompletado de shell no es compatible."
+msgstr ""
+"No se pudo detectar la versión de Bash, el autocompletado de shell no es "
+"compatible."
 
 #: venv/lib/python3.13/site-packages/click/termui.py:212
 msgid "Repeat for confirmation"

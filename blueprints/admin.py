@@ -14,6 +14,7 @@ from datetime import datetime
 
 from flask import Blueprint, render_template, redirect, url_for, flash, abort, request
 from flask_login import login_required, current_user
+from flask_babel import _
 
 from extensions import db
 from models import User, HobbyShop, Listing, Message
@@ -62,7 +63,7 @@ def shops():
         )
         db.session.add(shop)
         db.session.commit()
-        flash("Hobby shop added.", "success")
+        flash(_("Hobby shop added."), "success")
         return redirect(url_for("admin.shops"))
 
     all_shops = HobbyShop.query.order_by(HobbyShop.region, HobbyShop.name).all()
@@ -76,7 +77,7 @@ def toggle_shop(shop_id):
     shop = HobbyShop.query.get_or_404(shop_id)
     shop.active = not shop.active
     db.session.commit()
-    flash(f"{shop.name} is now {'active' if shop.active else 'inactive'}.", "info")
+    flash(_("{shop.name} is now {'active' if shop.active else 'inactive'}."), "info")
     return redirect(url_for("admin.shops"))
 
 
@@ -86,11 +87,11 @@ def toggle_shop(shop_id):
 def delete_shop(shop_id):
     shop = HobbyShop.query.get_or_404(shop_id)
     if shop.listings.count() > 0:
-        flash("Can't delete a shop that has listings - deactivate it instead.", "danger")
+        flash(_("Can't delete a shop that has listings - deactivate it instead."), "danger")
     else:
         db.session.delete(shop)
         db.session.commit()
-        flash("Hobby shop deleted.", "info")
+        flash(_("Hobby shop deleted."), "info")
     return redirect(url_for("admin.shops"))
 
 
@@ -110,11 +111,11 @@ def users():
 def toggle_admin(user_id):
     user = User.query.get_or_404(user_id)
     if user.id == current_user.id:
-        flash("You can't change your own admin status.", "warning")
+        flash(_("You can't change your own admin status."), "warning")
         return redirect(url_for("admin.users"))
     user.is_admin = not user.is_admin
     db.session.commit()
-    flash(f"{user.username} admin status: {user.is_admin}.", "info")
+    flash(_("{user.username} admin status: {user.is_admin}."), "info")
     return redirect(url_for("admin.users"))
 
 
@@ -124,11 +125,11 @@ def toggle_admin(user_id):
 def delete_user(user_id):
     user = User.query.get_or_404(user_id)
     if user.id == current_user.id:
-        flash("You can't delete your own account from here.", "warning")
+        flash(_("You can't delete your own account from here."), "warning")
         return redirect(url_for("admin.users"))
     db.session.delete(user)
     db.session.commit()
-    flash("User deleted.", "info")
+    flash(_("User deleted."), "info")
     return redirect(url_for("admin.users"))
 
 
@@ -150,7 +151,7 @@ def force_close(listing_id):
     listing.status = Listing.STATUS_CLOSED
     listing.closed_at = datetime.utcnow()
     db.session.commit()
-    flash("Listing force-closed.", "info")
+    flash(_("Listing force-closed."), "info")
     return redirect(url_for("admin.listings"))
 
 
@@ -161,5 +162,5 @@ def delete_listing(listing_id):
     listing = Listing.query.get_or_404(listing_id)
     db.session.delete(listing)
     db.session.commit()
-    flash("Listing deleted.", "info")
+    flash(_("Listing deleted."), "info")
     return redirect(url_for("admin.listings"))

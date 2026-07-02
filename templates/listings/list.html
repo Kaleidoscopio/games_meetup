@@ -6,14 +6,14 @@
 <div class="card">
   <form method="GET">
     <div class="form-group">
-      <label for="game">Game name</label>
-      <input type="text" id="game" name="game" value="{{ game }}" placeholder="e.g. Catan, Warhammer...">
+      <label for="game">{{ _('Game name') }}</label>
+      <input type="text" id="game" name="game" value="{{ game }}" placeholder="{{ _('e.g. Catan, Warhammer...') }}">
     </div>
     <div class="form-group">
-      <label for="region">Region</label>
-      <input type="text" id="region" name="region" value="{{ region }}" placeholder="e.g. Lisbon">
+      <label for="region">{{ _('Region') }}</label>
+      <input type="text" id="region" name="region" value="{{ region }}" placeholder="{{ _('e.g. Lisbon') }}">
     </div>
-    <button type="submit" class="btn btn-secondary">Filter</button>
+    <button type="submit" class="btn btn-secondary">{{ _('Filter') }}</button>
   </form>
 </div>
 

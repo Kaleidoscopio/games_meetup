@@ -10,6 +10,8 @@ from datetime import datetime
 
 from flask import Blueprint, render_template, redirect, url_for, flash, request, abort
 from flask_login import login_required, current_user
+from flask_babel import lazy_gettext as _l
+from flask_babel import _
 
 from extensions import db
 from models import Listing, HobbyShop, Enrollment
@@ -23,7 +25,7 @@ listings_bp = Blueprint("listings", __name__, url_prefix="/listings")
 def _populate_shop_choices(form):
     """Fill the shop dropdown with active hobby shops, grouped alphabetically."""
     shops = HobbyShop.query.filter_by(active=True).order_by(HobbyShop.region, HobbyShop.name).all()
-    form.shop_id.choices = [(0, "-- select a shop --")] + [(s.id, f"{s.name} ({s.region})") for s in shops]
+    form.shop_id.choices = [(0, _l("-- select a shop --"))] + [(s.id, f"{s.name} ({s.region})") for s in shops]
 
 
 @listings_bp.route("/")
@@ -70,7 +72,7 @@ def create():
 
         if form.location_type.data == "shop":
             if not form.shop_id.data:
-                flash("Please select a hobby shop, or switch to a free-text location.", "danger")
+                flash(_("Please select a hobby shop, or switch to a free-text location."), "danger")
                 return render_template("listings/create.html", form=form)
             shop = HobbyShop.query.get(form.shop_id.data)
             listing = Listing(
@@ -103,7 +105,7 @@ def create():
         listing.enrollments.append(Enrollment(user_id=current_user.id, notes="Organiser"))
 
         db.session.commit()
-        flash("Listing published!", "success")
+        flash(_("Listing published!"), "success")
         return redirect(url_for("listings.detail", listing_id=listing.id))
 
     return render_template("listings/create.html", form=form)
@@ -129,19 +131,19 @@ def enroll(listing_id):
     listing = Listing.query.get_or_404(listing_id)
 
     if not listing.is_open():
-        flash("This listing is no longer open.", "warning")
+        flash(_("This listing is no longer open."), "warning")
         return redirect(url_for("listings.detail", listing_id=listing.id))
 
     if listing.creator_id == current_user.id:
-        flash("You can't join your own listing.", "warning")
+        flash(_("You can't join your own listing."), "warning")
         return redirect(url_for("listings.detail", listing_id=listing.id))
 
     if listing.is_full():
-        flash("Sorry, this listing is already full.", "warning")
+        flash(_("Sorry, this listing is already full."), "warning")
         return redirect(url_for("listings.detail", listing_id=listing.id))
 
     if listing.enrollments.filter_by(user_id=current_user.id).first():
-        flash("You're already enrolled in this listing.", "info")
+        flash(_("You're already enrolled in this listing."), "info")
         return redirect(url_for("listings.detail", listing_id=listing.id))
 
     form = EnrollForm()
@@ -154,7 +156,7 @@ def enroll(listing_id):
     except Exception:
         pass  # never block the request just because email failed
 
-    flash("You're in! The organiser has been notified.", "success")
+    flash(_("You're in! The organiser has been notified."), "success")
     return redirect(url_for("listings.detail", listing_id=listing.id))
 
 
@@ -164,14 +166,14 @@ def leave(listing_id):
     listing = Listing.query.get_or_404(listing_id)
 
     if listing.creator_id == current_user.id:
-        flash("You're the organiser, so you can't leave your own listing - close it instead.", "warning")
+        flash(_("You're the organiser, so you can't leave your own listing - close it instead."), "warning")
         return redirect(url_for("listings.detail", listing_id=listing.id))
 
     enrollment = listing.enrollments.filter_by(user_id=current_user.id).first()
     if enrollment:
         db.session.delete(enrollment)
         db.session.commit()
-        flash("You've left this listing.", "info")
+        flash(_("You've left this listing."), "info")
     return redirect(url_for("listings.detail", listing_id=listing.id))
 
 
@@ -188,7 +190,7 @@ def close(listing_id):
         abort(403)
 
     if not listing.is_open():
-        flash("This listing is already closed.", "info")
+        flash(_("This listing is already closed."), "info")
         return redirect(url_for("listings.detail", listing_id=listing.id))
 
     listing.status = Listing.STATUS_CLOSED
@@ -204,5 +206,5 @@ def close(listing_id):
     except Exception:
         pass
 
-    flash("Listing closed and calendar invites sent to all players.", "success")
+    flash(_("Listing closed and calendar invites sent to all players."), "success")
     return redirect(url_for("listings.detail", listing_id=listing.id))
