@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Manage listings - Admin{% endblock %}
+{% block content %}
+<h2>Listings</h2>
+<div class="card table-scroll">
+  <table>
+    <tr><th>Game</th><th>Date</th><th>Status</th><th>Organiser</th><th></th></tr>
+    {% for listing in listings %}
+    <tr>
+      <td><a href="{{ url_for('listings.detail', listing_id=listing.id) }}">{{ listing.game_name }}</a></td>
+      <td>{{ listing.game_datetime.strftime('%d %b %Y') }}</td>
+      <td>{{ listing.status }}</td>
+      <td>{{ listing.creator.username }}</td>
+      <td>
+        {% if listing.is_open() %}
+        <form method="POST" action="{{ url_for('admin.force_close', listing_id=listing.id) }}" style="display:inline;">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <button type="submit" class="btn btn-small btn-secondary">Force close</button>
+        </form>
+        {% endif %}
+        <form method="POST" action="{{ url_for('admin.delete_listing', listing_id=listing.id) }}" style="display:inline;"
+              onsubmit="return confirm('Delete this listing? This cannot be undone.');">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <button type="submit" class="btn btn-small btn-danger">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

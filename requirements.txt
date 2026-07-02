@@ -1,0 +1,32 @@
+# Core web framework
+Flask==3.0.3
+
+# ORM for database access
+Flask-SQLAlchemy==3.1.1
+
+# PostgreSQL database driver (used in production)
+psycopg2-binary==2.9.12
+
+# Password hashing + login session management
+Flask-Login==0.6.3
+Werkzeug==3.0.3
+
+# Sending e-mail (password recovery, listing notifications)
+Flask-Mail==0.10.0
+email-validator==2.3.0
+
+# CSRF protection for forms
+Flask-WTF==1.2.1
+WTForms==3.1.2
+
+# Background scheduler used to auto-close listings 3 days after
+# the game date (no paid cron service required - runs in-process)
+APScheduler==3.10.4
+
+# .ics calendar file generation for meeting invites (free, no Google API costs)
+ics==0.7.2
+TatSu==5.8.3
+
+# Loads configuration from a local .env file so secrets are never
+# hard-coded in source control
+python-dotenv==1.0.1

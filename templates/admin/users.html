@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Manage users - Admin{% endblock %}
+{% block content %}
+<h2>Users</h2>
+<div class="card table-scroll">
+  <table>
+    <tr><th>Username</th><th>Email</th><th>Admin</th><th>Joined</th><th></th></tr>
+    {% for user in users %}
+    <tr>
+      <td>{{ user.username }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ 'Yes' if user.is_admin else 'No' }}</td>
+      <td>{{ user.created_at.strftime('%d %b %Y') }}</td>
+      <td>
+        {% if user.id != current_user.id %}
+        <form method="POST" action="{{ url_for('admin.toggle_admin', user_id=user.id) }}" style="display:inline;">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <button type="submit" class="btn btn-small btn-secondary">Toggle admin</button>
+        </form>
+        <form method="POST" action="{{ url_for('admin.delete_user', user_id=user.id) }}" style="display:inline;"
+              onsubmit="return confirm('Delete this user? This cannot be undone.');">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <button type="submit" class="btn btn-small btn-danger">Delete</button>
+        </form>
+        {% else %}
+          <span class="help-text">(you)</span>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

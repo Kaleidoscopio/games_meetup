@@ -1,0 +1,186 @@
+/* style.css
+   ---------
+   Mobile-first styling: the base rules target small phone screens,
+   then a single @media query widens things up for tablets/desktop.
+   Kept dependency-free (no framework) to stay lightweight and free
+   to host.
+*/
+
+:root {
+  --color-primary: #3f51b5;
+  --color-primary-dark: #303f9f;
+  --color-accent: #ff7043;
+  --color-bg: #f5f6fa;
+  --color-card: #ffffff;
+  --color-text: #212121;
+  --color-muted: #6b7280;
+  --color-success: #2e7d32;
+  --color-danger: #c62828;
+  --color-warning: #b26a00;
+  --color-info: #1565c0;
+  --radius: 10px;
+  --spacing: 16px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 16px;
+  line-height: 1.45;
+  padding-bottom: 70px; /* space for the fixed bottom nav on mobile */
+}
+
+a { color: var(--color-primary); text-decoration: none; }
+
+h1, h2, h3 { line-height: 1.2; margin: 0 0 12px; }
+
+.container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: var(--spacing);
+}
+
+/* --- Top bar --------------------------------------------------------- */
+.topbar {
+  background: var(--color-primary);
+  color: white;
+  padding: 14px var(--spacing);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.topbar .brand { font-weight: 700; font-size: 1.15rem; color: white; }
+.topbar .brand span { color: var(--color-accent); }
+
+/* --- Bottom nav (mobile) --------------------------------------------- */
+.bottom-nav {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: white;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0;
+  z-index: 10;
+}
+.bottom-nav a {
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 8px;
+}
+.bottom-nav a.active { color: var(--color-primary); font-weight: 600; }
+.bottom-nav .icon { font-size: 1.3rem; }
+
+/* --- Cards ------------------------------------------------------------- */
+.card {
+  background: var(--color-card);
+  border-radius: var(--radius);
+  padding: var(--spacing);
+  margin-bottom: var(--spacing);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+/* --- Forms -------------------------------------------------------------- */
+.form-group { margin-bottom: 14px; }
+label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.9rem; }
+input[type=text], input[type=email], input[type=password], input[type=number],
+input[type=date], input[type=time], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d0d3da;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: white;
+  color: var(--color-text);
+}
+textarea { min-height: 90px; resize: vertical; }
+.checkbox-row { display: flex; align-items: center; gap: 8px; }
+.field-error { color: var(--color-danger); font-size: 0.82rem; margin-top: 4px; }
+.help-text { color: var(--color-muted); font-size: 0.82rem; margin-top: 4px; }
+
+/* --- Buttons ------------------------------------------------------------- */
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+}
+.btn-primary { background: var(--color-primary); color: white; }
+.btn-primary:active { background: var(--color-primary-dark); }
+.btn-secondary { background: #e8eaf6; color: var(--color-primary-dark); }
+.btn-danger { background: #fdecea; color: var(--color-danger); }
+.btn-success { background: #e8f5e9; color: var(--color-success); }
+.btn-small { width: auto; padding: 8px 14px; font-size: 0.85rem; }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-row .btn { width: auto; flex: 1; }
+
+/* --- Flash messages -------------------------------------------------------- */
+.flash { padding: 12px 14px; border-radius: 8px; margin-bottom: 12px; font-size: 0.9rem; }
+.flash-success { background: #e8f5e9; color: var(--color-success); }
+.flash-danger { background: #fdecea; color: var(--color-danger); }
+.flash-warning { background: #fff8e1; color: var(--color-warning); }
+.flash-info { background: #e3f2fd; color: var(--color-info); }
+
+/* --- Listing cards -------------------------------------------------------- */
+.listing-card h3 { margin-bottom: 4px; }
+.badge {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.badge-open { background: #e8f5e9; color: var(--color-success); }
+.badge-closed { background: #eceff1; color: var(--color-muted); }
+.badge-full { background: #fff3e0; color: var(--color-accent); }
+.meta-row { color: var(--color-muted); font-size: 0.87rem; margin: 3px 0; }
+.meta-row .icon { margin-right: 4px; }
+
+/* --- Message bubbles -------------------------------------------------------- */
+.msg-bubble { max-width: 80%; padding: 10px 14px; border-radius: 14px; margin-bottom: 8px; font-size: 0.92rem; }
+.msg-mine { background: var(--color-primary); color: white; margin-left: auto; border-bottom-right-radius: 3px; }
+.msg-theirs { background: #eceff1; color: var(--color-text); margin-right: auto; border-bottom-left-radius: 3px; }
+.msg-time { font-size: 0.7rem; opacity: 0.7; margin-top: 3px; }
+
+/* --- Tables (admin) ---------------------------------------------------- */
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid #eee; }
+.table-scroll { overflow-x: auto; }
+
+/* --- Enrollment list --------------------------------------------------- */
+.player-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+.player-row:last-child { border-bottom: none; }
+
+/* --- Stat grid (admin dashboard) --------------------------------------- */
+.stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.stat-box { background: white; border-radius: var(--radius); padding: 14px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+.stat-box .num { font-size: 1.6rem; font-weight: 700; color: var(--color-primary); }
+.stat-box .label { font-size: 0.78rem; color: var(--color-muted); }
+
+/* --- Wider screens: unlock a roomier layout, no bottom nav needed ------- */
+@media (min-width: 700px) {
+  body { padding-bottom: 0; }
+  .container { max-width: 720px; padding: 24px; }
+  .bottom-nav { display: none; }
+  .topbar-nav { display: flex; gap: 18px; }
+  .topbar-nav a { color: white; font-size: 0.95rem; }
+  .btn { width: auto; }
+}

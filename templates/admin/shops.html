@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Manage hobby shops - Admin{% endblock %}
+{% block content %}
+<h2>Hobby shops</h2>
+
+<div class="card">
+  <h3>Add a shop</h3>
+  <form method="POST" novalidate>
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      {{ form.name.label }}{{ form.name() }}
+    </div>
+    <div class="form-group">
+      {{ form.region.label }}{{ form.region() }}
+    </div>
+    <div class="form-group">
+      {{ form.address.label }}{{ form.address() }}
+    </div>
+    <div class="form-group">
+      {{ form.active.label }}{{ form.active() }}
+    </div>
+    {{ form.submit(class_="btn btn-primary") }}
+  </form>
+</div>
+
+<div class="card table-scroll">
+  <table>
+    <tr><th>Name</th><th>Region</th><th>Active</th><th></th></tr>
+    {% for shop in shops %}
+    <tr>
+      <td>{{ shop.name }}</td>
+      <td>{{ shop.region }}</td>
+      <td>{{ 'Yes' if shop.active else 'No' }}</td>
+      <td>
+        <form method="POST" action="{{ url_for('admin.toggle_shop', shop_id=shop.id) }}" style="display:inline;">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <button type="submit" class="btn btn-small btn-secondary">Toggle</button>
+        </form>
+        <form method="POST" action="{{ url_for('admin.delete_shop', shop_id=shop.id) }}" style="display:inline;"
+              onsubmit="return confirm('Delete this shop?');">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <button type="submit" class="btn btn-small btn-danger">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

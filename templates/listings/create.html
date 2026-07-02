@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}New listing - Games Meetup{% endblock %}
+{% block content %}
+<div class="card">
+  <h2>Create a listing</h2>
+  <form method="POST" novalidate>
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+      {{ form.game_name.label }}
+      {{ form.game_name(placeholder="e.g. Warhammer 40k, Catan, D&D one-shot...") }}
+      {% for error in form.game_name.errors %}<div class="field-error">{{ error }}</div>{% endfor %}
+    </div>
+
+    <div class="form-group">
+      {{ form.game_date.label }}
+      {{ form.game_date() }}
+      {% for error in form.game_date.errors %}<div class="field-error">{{ error }}</div>{% endfor %}
+    </div>
+
+    <div class="form-group">
+      {{ form.game_time.label }}
+      {{ form.game_time() }}
+      <p class="help-text">24-hour format, e.g. 19:30</p>
+      {% for error in form.game_time.errors %}<div class="field-error">{{ error }}</div>{% endfor %}
+    </div>
+
+    <div class="form-group">
+      {{ form.location_type.label }}
+      {{ form.location_type(id="location_type") }}
+    </div>
+
+    <div class="form-group" id="shop-field">
+      {{ form.shop_id.label }}
+      {{ form.shop_id() }}
+      <p class="help-text">Don't see your shop? Ask an admin to add it, or switch to a personalized location.</p>
+    </div>
+
+    <div class="form-group" id="free-field">
+      {{ form.free_location_text.label }}
+      {{ form.free_location_text(placeholder="e.g. Online (Discord), or a street address") }}
+
+      {{ form.region.label }}
+      {{ form.region(placeholder="e.g. Lisbon, Online") }}
+    </div>
+
+    <div class="form-group">
+      {{ form.players_required.label }}
+      {{ form.players_required() }}
+      {% for error in form.players_required.errors %}<div class="field-error">{{ error }}</div>{% endfor %}
+    </div>
+
+    <div class="form-group">
+      {{ form.notes.label }}
+      {{ form.notes(placeholder="Any extra details players should know") }}
+    </div>
+
+    {{ form.submit(class_="btn btn-primary") }}
+  </form>
+</div>
+
+<script>
+  // Toggle between "pick a shop" and "free-text location" fields
+  // depending on the selected location type - keeps the form compact
+  // on small phone screens by hiding the irrelevant field.
+  const locationType = document.getElementById('location_type');
+  const shopField = document.getElementById('shop-field');
+  const freeField = document.getElementById('free-field');
+
+  function syncLocationFields() {
+    if (locationType.value === 'shop') {
+      shopField.style.display = 'block';
+      freeField.style.display = 'none';
+    } else {
+      shopField.style.display = 'none';
+      freeField.style.display = 'block';
+    }
+  }
+  locationType.addEventListener('change', syncLocationFields);
+  syncLocationFields();
+</script>
+{% endblock %}

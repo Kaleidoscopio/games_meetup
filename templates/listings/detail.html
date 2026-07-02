@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}{{ listing.game_name }} - Games Meetup{% endblock %}
+{% block content %}
+
+<div class="card">
+  <h2>{{ listing.game_name }}</h2>
+  <span class="badge {{ 'badge-closed' if not listing.is_open() else ('badge-full' if listing.is_full() else 'badge-open') }}">
+    {% if not listing.is_open() %}Closed{% elif listing.is_full() %}Full{% else %}Open{% endif %}
+  </span>
+
+  <p class="meta-row"><span class="icon">📅</span>{{ listing.game_datetime.strftime('%A, %d %B %Y at %H:%M') }}</p>
+  <p class="meta-row"><span class="icon">📍</span>{{ listing.location_display() }}</p>
+  <p class="meta-row"><span class="icon">👥</span>{{ listing.spots_taken() }} / {{ listing.players_required }} players</p>
+  <p class="meta-row"><span class="icon">🙋</span>Organised by
+    {% if listing.creator_id != current_user.id %}
+      <a href="{{ url_for('messaging.thread', user_id=listing.creator_id, listing_id=listing.id) }}">{{ listing.creator.username }}</a>
+    {% else %}
+      you
+    {% endif %}
+  </p>
+  {% if listing.notes %}<p class="meta-row"><span class="icon">📝</span>{{ listing.notes }}</p>{% endif %}
+</div>
+
+<div class="card">
+  <h3>Players ({{ listing.spots_taken() }})</h3>
+  {% if listing.enrollments.count() == 0 %}
+    <p class="help-text">No one has joined yet.</p>
+  {% endif %}
+  {% for e in listing.enrollments %}
+    <div class="player-row">
+      <div>
+        <strong>{{ e.user.username }}</strong>
+        {% if e.notes %}<div class="help-text">{{ e.notes }}</div>{% endif %}
+      </div>
+      {% if e.user_id != current_user.id %}
+        <a class="btn btn-small btn-secondary" href="{{ url_for('messaging.thread', user_id=e.user_id, listing_id=listing.id) }}">Message</a>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+
+{% if listing.is_open() %}
+  {% if listing.creator_id == current_user.id %}
+    <div class="card">
+      <h3>Organiser actions</h3>
+      <p class="help-text">Once you've arranged the game, close the listing to notify everyone and send calendar invites.</p>
+      <form method="POST" action="{{ url_for('listings.close', listing_id=listing.id) }}">
+        {{ enroll_form.hidden_tag() }}
+        <button type="submit" class="btn btn-primary">Close listing &amp; send invites</button>
+      </form>
+    </div>
+  {% elif already_enrolled %}
+    <div class="card">
+      <p>✅ You're enrolled in this game.</p>
+      <form method="POST" action="{{ url_for('listings.leave', listing_id=listing.id) }}">
+        {{ enroll_form.hidden_tag() }}
+        <button type="submit" class="btn btn-danger">Leave this listing</button>
+      </form>
+    </div>
+  {% elif listing.is_full() %}
+    <div class="card"><p class="help-text">This listing is full.</p></div>
+  {% else %}
+    <div class="card">
+      <h3>Join this game</h3>
+      <form method="POST" action="{{ url_for('listings.enroll', listing_id=listing.id) }}">
+        {{ enroll_form.hidden_tag() }}
+        <div class="form-group">
+          {{ enroll_form.notes.label }}
+          {{ enroll_form.notes(placeholder="e.g. Playing Orks / bringing my own deck") }}
+        </div>
+        {{ enroll_form.submit(class_="btn btn-primary") }}
+      </form>
+    </div>
+  {% endif %}
+{% else %}
+  <div class="card">
+    <p class="help-text">This listing is closed{% if listing.closed_at %} ({{ listing.closed_at.strftime('%d %b %Y') }}){% endif %}.</p>
+  </div>
+{% endif %}
+
+{% endblock %}

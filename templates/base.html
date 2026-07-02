@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- width=device-width + initial-scale=1 is what makes the layout
+       render correctly on phone screens instead of a zoomed-out desktop view -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>{% block title %}Games Meetup{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="{{ url_for('index') }}" class="brand">Games<span>Meetup</span></a>
+    {% if current_user.is_authenticated %}
+    <nav class="topbar-nav">
+      <a href="{{ url_for('listings.browse') }}">Browse</a>
+      <a href="{{ url_for('listings.create') }}">New listing</a>
+      <a href="{{ url_for('messaging.inbox') }}">Messages</a>
+      {% if current_user.is_admin %}<a href="{{ url_for('admin.dashboard') }}">Admin</a>{% endif %}
+      <a href="{{ url_for('auth.logout') }}">Log out</a>
+    </nav>
+    {% endif %}
+  </header>
+
+  <main class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash flash-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </main>
+
+  {% if current_user.is_authenticated %}
+  <nav class="bottom-nav">
+    <a href="{{ url_for('listings.browse') }}" class="{{ 'active' if request.endpoint == 'listings.browse' }}">
+      <span class="icon">🎲</span>Browse
+    </a>
+    <a href="{{ url_for('listings.create') }}" class="{{ 'active' if request.endpoint == 'listings.create' }}">
+      <span class="icon">➕</span>New
+    </a>
+    <a href="{{ url_for('listings.my_listings') }}" class="{{ 'active' if request.endpoint == 'listings.my_listings' }}">
+      <span class="icon">📋</span>My games
+    </a>
+    <a href="{{ url_for('messaging.inbox') }}" class="{{ 'active' if request.blueprint == 'messaging' }}">
+      <span class="icon">💬</span>Messages
+    </a>
+    {% if current_user.is_admin %}
+    <a href="{{ url_for('admin.dashboard') }}" class="{{ 'active' if request.blueprint == 'admin' }}">
+      <span class="icon">⚙️</span>Admin
+    </a>
+    {% endif %}
+  </nav>
+  {% endif %}
+
+</body>
+</html>
