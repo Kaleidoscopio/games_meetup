@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Games Meetup 1.0\n"
 "Report-Msgid-Bugs-To: gamesmeetuppt@gmail.com\n"
-"POT-Creation-Date: 2026-07-02 17:56+0100\n"
+"POT-Creation-Date: 2026-07-02 18:47+0100\n"
 "PO-Revision-Date: 2026-07-02 16:00+0100\n"
 "Last-Translator: Daniel Almeida <gamesmeetuppt@gmail.com>\n"
 "Language: pt\n"
@@ -18,6 +18,153 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
+
+#: forms.py:20 templates/admin/users.html:7
+msgid "Username"
+msgstr "Nome de utilizador"
+
+#: forms.py:21 forms.py:31 forms.py:38 templates/admin/users.html:7
+msgid "Email"
+msgstr "E-mail"
+
+#: forms.py:22 forms.py:32
+msgid "Password"
+msgstr "Palavra-passe"
+
+#: forms.py:22
+msgid "Use at least 8 characters."
+msgstr "Usa pelo menos 8 caracteres."
+
+#: forms.py:24
+msgid "Confirm password"
+msgstr "Confirma a tua palavra-passe"
+
+#: forms.py:25 forms.py:46
+msgid "Passwords must match."
+msgstr "As palavras-passe têm de coincidir."
+
+#: forms.py:27
+msgid "Create account"
+msgstr "Criar conta"
+
+#: forms.py:33 templates/auth/login.html:23
+msgid "Keep me signed in"
+msgstr "Manter a sessão iniciada"
+
+#: forms.py:34 templates/auth/login.html:5 templates/auth/login.html:26
+#: templates/auth/register.html:35 templates/index.html:9
+msgid "Log in"
+msgstr "Iniciar sessão"
+
+#: forms.py:39
+msgid "Send reset link"
+msgstr "Enviar ligação de reposição"
+
+#: forms.py:43
+msgid "New password"
+msgstr "Nova palavra-passe"
+
+#: forms.py:45
+msgid "Confirm new password"
+msgstr "Confirma a nova palavra-passe"
+
+#: forms.py:48
+msgid "Reset password"
+msgstr "Repor palavra-passe"
+
+#: forms.py:52 templates/listings/list.html:9
+msgid "Game name"
+msgstr "Nome do jogo"
+
+#: forms.py:60 templates/admin/listings.html:7
+msgid "Date"
+msgstr "Data"
+
+#: forms.py:62
+msgid "Time"
+msgstr "Hora"
+
+#: forms.py:66
+msgid "HH:MM (24-hour)"
+msgstr "HH:MM (24 horas)"
+
+#: forms.py:71
+msgid "Location type"
+msgstr "Tipo de localização"
+
+#: forms.py:72
+msgid "Hobby Shop - Listed below"
+msgstr "Loja de jogos - Listada abaixo"
+
+#: forms.py:72
+msgid "Personalized location"
+msgstr "Localização personalizada"
+
+#: forms.py:75
+msgid "Hobby shop"
+msgstr "Loja de jogos"
+
+#: forms.py:76
+msgid "Location (address / description)"
+msgstr "Localização (endereço / descrição)"
+
+#: forms.py:77 forms.py:98 templates/admin/shops.html:28
+#: templates/listings/list.html:13
+msgid "Region"
+msgstr "Região"
+
+#: forms.py:80
+#, python-format
+msgid "Players required"
+msgstr "Jogadores necessários"
+
+#: forms.py:82
+msgid "Notes (optional)"
+msgstr "Notas (opcional)"
+
+#: forms.py:83
+msgid "Publish listing"
+msgstr "Publicar anúncio"
+
+#: forms.py:87
+msgid "Notes (e.g. faction / deck / character)"
+msgstr "Notas (ex: fação / baralho / personagem)"
+
+#: forms.py:88 templates/listings/detail.html:64
+msgid "Join this game"
+msgstr "Juntar-me a este jogo"
+
+#: forms.py:92 templates/listings/detail.html:36
+msgid "Message"
+msgstr "Mensagem"
+
+#: forms.py:93
+msgid "Send"
+msgstr "Enviar"
+
+#: forms.py:97
+msgid "Shop name"
+msgstr "Nome da loja"
+
+#: forms.py:99
+msgid "Address"
+msgstr "Endereço"
+
+#: forms.py:100 templates/admin/shops.html:28
+msgid "Active"
+msgstr "Ativa"
+
+#: forms.py:100 templates/admin/shops.html:33 templates/admin/users.html:12
+msgid "Yes"
+msgstr "Sim"
+
+#: forms.py:100 templates/admin/shops.html:33 templates/admin/users.html:12
+msgid "No"
+msgstr "Não"
+
+#: forms.py:101
+msgid "Save shop"
+msgstr "Gravar loja"
 
 #: blueprints/admin.py:66
 msgid "Hobby shop added."
@@ -88,7 +235,9 @@ msgstr "Sessão terminada."
 
 #: blueprints/auth.py:104
 msgid "If that email is registered, a reset link has been sent."
-msgstr "Se esse email estiver registado, um endereço para reposição da palavra passe foi enviado."
+msgstr ""
+"Se esse email estiver registado, um endereço para reposição da palavra "
+"passe foi enviado."
 
 #: blueprints/auth.py:114
 msgid "That password reset link is invalid or has expired."
@@ -97,6 +246,10 @@ msgstr "Essa ligação para reposição de palavra passe é inválido ou expirou
 #: blueprints/auth.py:122
 msgid "Your password has been reset. Please log in."
 msgstr "A tua password foi reposta. Por favor inicia sessão."
+
+#: blueprints/listings.py:28
+msgid "-- select a shop --"
+msgstr "-- escolhe uma loja --"
 
 #: blueprints/listings.py:75
 msgid "Please select a hobby shop, or switch to a free-text location."
@@ -127,8 +280,12 @@ msgid "You're in! The organiser has been notified."
 msgstr "Estás inscrito! O organizador foi informado."
 
 #: blueprints/listings.py:169
-msgid "You're the organiser, so you can't leave your own listing - close it instead."
-msgstr "És o organizador, não podes sair do teu próprio anúncio - fecha-o em alternativa."
+msgid ""
+"You're the organiser, so you can't leave your own listing - close it "
+"instead."
+msgstr ""
+"És o organizador, não podes sair do teu próprio anúncio - fecha-o em "
+"alternativa."
 
 #: blueprints/listings.py:176
 msgid "You've left this listing."
@@ -144,7 +301,7 @@ msgstr "Anúncio fechado e convites de calendário enviados para todos os jogado
 
 #: templates/base.html:18
 msgid "Language"
-msgstr "Linguagem"
+msgstr "Idioma"
 
 #: templates/base.html:27 templates/base.html:53
 msgid "Browse"
@@ -178,7 +335,7 @@ msgstr "Os meus jogos"
 
 #: templates/base.html:74
 msgid "built by Daniel Almeida"
-msgstr "desenvolvido por Daniel Almeida"
+msgstr "desarrolado por Daniel Almeida"
 
 #: templates/base.html:77
 msgid "Contact the admin"
@@ -190,16 +347,13 @@ msgstr "Encontra o teu próximo jogo"
 
 #: templates/index.html:6
 msgid "Find players. Arrange games. Online or at your local hobby shop."
-msgstr "Encontra jogadores. Organiza partidas. Online ou na tua loja de jogos local."
+msgstr ""
+"Encontra jogadores. Organiza partidas. Online ou na tua loja de jogos "
+"local."
 
 #: templates/index.html:8
 msgid "Create a free account"
 msgstr "Criar uma conta gratuita"
-
-#: templates/auth/login.html:5 templates/auth/login.html:26
-#: templates/auth/register.html:35 templates/index.html:9
-msgid "Log in"
-msgstr "Iniciar sessão"
 
 #: templates/index.html:14
 msgid "How it works"
@@ -300,10 +454,6 @@ msgid "Game"
 msgstr "Jogo"
 
 #: templates/admin/listings.html:7
-msgid "Date"
-msgstr "Data"
-
-#: templates/admin/listings.html:7
 msgid "Status"
 msgstr "Estado"
 
@@ -336,22 +486,6 @@ msgstr "Adicionar loja"
 msgid "Name"
 msgstr "Nome"
 
-#: templates/admin/shops.html:28 templates/listings/list.html:13
-msgid "Region"
-msgstr "Região"
-
-#: templates/admin/shops.html:28
-msgid "Active"
-msgstr "Ativa"
-
-#: templates/admin/shops.html:33 templates/admin/users.html:12
-msgid "Yes"
-msgstr "Sim"
-
-#: templates/admin/shops.html:33 templates/admin/users.html:12
-msgid "No"
-msgstr "Não"
-
 #: templates/admin/shops.html:37
 msgid "Toggle"
 msgstr "Alternar"
@@ -363,14 +497,6 @@ msgstr "Tens a certeza de que queres eliminar esta loja?"
 #: templates/admin/users.html:2
 msgid "Manage users - Admin"
 msgstr "Gerir utilizadores - Admin"
-
-#: templates/admin/users.html:7
-msgid "Username"
-msgstr "Nome de utilizador"
-
-#: templates/admin/users.html:7
-msgid "Email"
-msgstr "E-mail"
 
 #: templates/admin/users.html:7
 msgid "Joined"
@@ -400,15 +526,11 @@ msgstr ""
 
 #: templates/auth/forgot_password.html:16
 msgid "Back to login"
-msgstr "Voltar ao início de sessão"
+msgstr "Volver ao início de sessão"
 
 #: templates/auth/login.html:2
 msgid "Log in - Games Meetup"
 msgstr "Iniciar sessão - Games Meetup"
-
-#: templates/auth/login.html:23
-msgid "Keep me signed in"
-msgstr "Manter a sessão iniciada"
 
 #: templates/auth/login.html:29
 msgid "Forgot your password?"
@@ -598,10 +720,6 @@ msgstr "Jogadores"
 msgid "No one has joined yet."
 msgstr "Ainda ninguém se inscreveu."
 
-#: templates/listings/detail.html:36
-msgid "Message"
-msgstr "Mensagem"
-
 #: templates/listings/detail.html:45
 msgid "Organiser actions"
 msgstr "Ações do organizador"
@@ -630,10 +748,6 @@ msgstr "Sair deste anúncio"
 msgid "This listing is full."
 msgstr "Este anúncio está completo."
 
-#: templates/listings/detail.html:64
-msgid "Join this game"
-msgstr "Juntar-me a este jogo"
-
 #: templates/listings/detail.html:69
 msgid "e.g. Playing Orks / bringing my own deck"
 msgstr "ex: Vou jogar com Orks / levo o meu próprio baralho"
@@ -649,10 +763,6 @@ msgstr "Procurar jogos"
 #: templates/listings/list.html:4
 msgid "Open games"
 msgstr "Jogos em aberto"
-
-#: templates/listings/list.html:9
-msgid "Game name"
-msgstr "Nome do jogo"
 
 #: templates/listings/list.html:10
 msgid "e.g. Catan, Warhammer..."
@@ -731,6 +841,10 @@ msgstr "Diz olá para começar a conversa."
 #: templates/messaging/thread.html:25
 msgid "Type your message..."
 msgstr "Escreve a tua mensagem..."
+
+#: utils/email_utils.py:46
+msgid "Reset your Games Meetup password"
+msgstr "Repor a tua palavra-passe do Games Meetup"
 
 #: utils/ics_utils.py:26
 #, python-format
@@ -970,7 +1084,7 @@ msgstr "Utilização:"
 #: venv/lib/python3.13/site-packages/click/parser.py:145
 #, python-brace-format
 msgid "Invalid start character for option ({option})"
-msgstr "Carácter de início inválido para a opção ({option})"
+msgstr "Carácter de início inválido para la opção ({option})"
 
 #: venv/lib/python3.13/site-packages/click/parser.py:203
 #, python-brace-format
@@ -1270,9 +1384,7 @@ msgstr "Não é uma escolha válida."
 
 #: venv/lib/python3.13/site-packages/wtforms/fields/choices.py:194
 msgid "Invalid choice(s): one or more data inputs could not be coerced."
-msgstr ""
-"Escolha(s) inválida(s): não foi possível converter um ou mais dados "
-"introduzidos."
+msgstr "Escolha(s) inválida(s): não foi possível converter um ou mais dados introduzidos."
 
 #: venv/lib/python3.13/site-packages/wtforms/fields/choices.py:212
 #, python-format
@@ -1309,4 +1421,3 @@ msgstr "Não é um número decimal válido."
 #: venv/lib/python3.13/site-packages/wtforms/fields/numeric.py:197
 msgid "Not a valid float value."
 msgstr "Não é um número de vírgula flutuante (float) válido."
-

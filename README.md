@@ -47,6 +47,7 @@ games_meetup/
 │   ├── ics_utils.py            # .ics calendar file generation
 │   └── scheduler.py             # APScheduler auto-close job
 ├── templates/                  # Jinja2 templates (mobile-first HTML)
+├── translations/*              # Translation files
 └── static/css/style.css         # Dependency-free, mobile-first CSS
 ```
 
@@ -87,10 +88,10 @@ Notes for production:
 
   ```bash
   pip install gunicorn
-  gunicorn -w 2 -b 0.0.0.0:$PORT app:app
+  gunicorn -w 1 -b 0.0.0.0:$PORT app:app
   ```
 
-  (`-w 2` = 2 worker processes. If you use more than 1 worker, be aware
+  (`-w 1` = 1 worker process. If you use more than 1 worker, be aware
   the in-process APScheduler job will run once per worker — for a
   small hobby app this is harmless, but if you want a single
   authoritative scheduler, run it as a separate `python -c "from
@@ -106,8 +107,7 @@ Notes for production:
 
 ## Notes on the code
 
-- Every file is commented to explain *why*, not just *what* — look for
-  the module-level docstrings and inline comments throughout.
+- Every file is commented.
 - CSRF protection (Flask-WTF) is enabled globally; every POST form
   includes a CSRF token, either via `form.hidden_tag()` for WTForms
   forms or a manual hidden `csrf_token` input for the small
@@ -120,7 +120,7 @@ Notes for production:
 
 -  Extract all marked strings into a template file
 ```
-pybabel extract -F babel.cfg -o messages.pot .
+pybabel extract -F babel.cfg -k _ -k _l -o messages.pot .
 ```
 
 - Initialize a new language (repeat per language)
@@ -141,6 +141,6 @@ pybabel compile -d translations
 
 - When you add/change strings later, re-extract and merge:
 ```
-pybabel extract -F babel.cfg -o messages.pot .
+pybabel extract -F babel.cfg -k _ -k _l -o messages.pot .
 pybabel update -i messages.pot -d translations
 ```
