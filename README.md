@@ -117,6 +117,8 @@ Notes for production:
 - Password reset tokens are single-use and expire after 30 minutes.
 
 ## Translations
+App is already translated to Portuguese, French and Spanish, if you
+wish to translate to more languages:
 
 -  Extract all marked strings into a template file
 ```
