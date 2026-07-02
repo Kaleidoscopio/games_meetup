@@ -1,10 +1,10 @@
 {% extends "base.html" %}
-{% block title %}Messages - Games Meetup{% endblock %}
+{% block title %}{{ _('Messages') }} - Games Meetup{% endblock %}
 {% block content %}
-<h2>Messages</h2>
+<h2>{{ _('Messages') }}</h2>
 
 {% if not conversations %}
-  <div class="card"><p class="help-text">No conversations yet. Message someone from a listing's player list to start one.</p></div>
+  <div class="card"><p class="help-text">{{ _('No conversations yet. Message someone from a listing\'s player list to start one.') }}</p></div>
 {% endif %}
 
 {% for other_id, last_msg in conversations.items() %}
@@ -14,7 +14,7 @@
     <div class="card">
       <strong>{{ other_user.username }}</strong>
       {% if last_msg.read_at is none and last_msg.recipient_id == current_user.id %}
-        <span class="badge badge-open">New</span>
+        <span class="badge badge-open">{{ _('New') }}</span>
       {% endif %}
       <p class="meta-row">{{ last_msg.body[:80] }}{{ '...' if last_msg.body|length > 80 else '' }}</p>
       <p class="meta-row">{{ last_msg.sent_at.strftime('%d %b %Y, %H:%M') }}</p>

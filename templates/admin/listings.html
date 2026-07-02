@@ -1,10 +1,10 @@
 {% extends "base.html" %}
-{% block title %}Manage listings - Admin{% endblock %}
+{% block title %}{{ _('Manage listings - Admin') }}{% endblock %}
 {% block content %}
-<h2>Listings</h2>
+<h2>{{ _('Listings') }}</h2>
 <div class="card table-scroll">
   <table>
-    <tr><th>Game</th><th>Date</th><th>Status</th><th>Organiser</th><th></th></tr>
+    <tr><th>{{ _('Game') }}</th><th>{{ _('Date') }}</th><th>{{ _('Status') }}</th><th>{{ _('Organiser') }}</th><th></th></tr>
     {% for listing in listings %}
     <tr>
       <td><a href="{{ url_for('listings.detail', listing_id=listing.id) }}">{{ listing.game_name }}</a></td>
@@ -15,13 +15,13 @@
         {% if listing.is_open() %}
         <form method="POST" action="{{ url_for('admin.force_close', listing_id=listing.id) }}" style="display:inline;">
           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-          <button type="submit" class="btn btn-small btn-secondary">Force close</button>
+          <button type="submit" class="btn btn-small btn-secondary">{{ _('Force close') }}</button>
         </form>
         {% endif %}
         <form method="POST" action="{{ url_for('admin.delete_listing', listing_id=listing.id) }}" style="display:inline;"
-              onsubmit="return confirm('Delete this listing? This cannot be undone.');">
+              onsubmit="return confirm('{{ _('Delete this listing? This cannot be undone.') }}');">
           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-          <button type="submit" class="btn btn-small btn-danger">Delete</button>
+          <button type="submit" class="btn btn-small btn-danger">{{ _('Delete') }}</button>
         </form>
       </td>
     </tr>

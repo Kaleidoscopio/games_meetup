@@ -1,29 +1,29 @@
 {% extends "base.html" %}
-{% block title %}Admin - Games Meetup{% endblock %}
+{% block title %}{{ _('Admin - Games Meetup') }}{% endblock %}
 {% block content %}
-<h2>Admin dashboard</h2>
+<h2>{{ _('Admin dashboard') }}</h2>
 
 <div class="stat-grid">
-  <div class="stat-box"><div class="num">{{ stats.users }}</div><div class="label">Users</div></div>
-  <div class="stat-box"><div class="num">{{ stats.listings_open }}</div><div class="label">Open listings</div></div>
-  <div class="stat-box"><div class="num">{{ stats.listings_closed }}</div><div class="label">Closed listings</div></div>
-  <div class="stat-box"><div class="num">{{ stats.shops }}</div><div class="label">Hobby shops</div></div>
-  <div class="stat-box"><div class="num">{{ stats.messages }}</div><div class="label">Messages sent</div></div>
+  <div class="stat-box"><div class="num">{{ stats.users }}</div><div class="label">{{ _('Users') }}</div></div>
+  <div class="stat-box"><div class="num">{{ stats.listings_open }}</div><div class="label">{{ _('Open listings') }}</div></div>
+  <div class="stat-box"><div class="num">{{ stats.listings_closed }}</div><div class="label">{{ _('Closed listings') }}</div></div>
+  <div class="stat-box"><div class="num">{{ stats.shops }}</div><div class="label">{{ _('Hobby shops') }}</div></div>
+  <div class="stat-box"><div class="num">{{ stats.messages }}</div><div class="label">{{ _('Messages sent') }}</div></div>
 </div>
 
 <div class="card">
-  <h3>Maintenance</h3>
+  <h3>{{ _('Maintenance') }}</h3>
   <div class="btn-row" style="flex-direction:column;">
-    <a class="btn btn-secondary" href="{{ url_for('admin.shops') }}">Manage hobby shops</a>
-    <a class="btn btn-secondary" href="{{ url_for('admin.users') }}">Manage users</a>
-    <a class="btn btn-secondary" href="{{ url_for('admin.listings') }}">Manage listings</a>
+    <a class="btn btn-secondary" href="{{ url_for('admin.shops') }}">{{ _('Manage hobby shops') }}</a>
+    <a class="btn btn-secondary" href="{{ url_for('admin.users') }}">{{ _('Manage users') }}</a>
+    <a class="btn btn-secondary" href="{{ url_for('admin.listings') }}">{{ _('Manage listings') }}</a>
   </div>
 </div>
 
 <div class="card">
   <p class="help-text">
-    Listings are automatically closed {{ config.AUTO_CLOSE_AFTER_DAYS if config is defined else 3 }} days
-    after their game date by a background job that checks every hour.
+    {{ _('Listings are automatically closed') }} {{ config.AUTO_CLOSE_AFTER_DAYS if config is defined else 3 }} {{ _('days') }}
+    {{ _('after their game date by a background job that checks every hour.') }}
   </p>
 </div>
 {% endblock %}

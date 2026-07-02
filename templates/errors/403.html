@@ -1,9 +1,9 @@
 {% extends "base.html" %}
-{% block title %}Access denied{% endblock %}
+{% block title %}{{ _('Access denied') }}{% endblock %}
 {% block content %}
 <div class="card" style="text-align:center;">
-  <h2>🚫 Access denied</h2>
-  <p>You don't have permission to view this page.</p>
-  <a class="btn btn-primary" href="{{ url_for('index') }}">Go home</a>
+  <h2>🚫 {{ _('Access denied') }}</h2>
+  <p>{{ _('You don\'t have permission to view this page.') }}</p>
+  <a class="btn btn-primary" href="{{ url_for('index') }}">{{ _('Go home') }}</a>
 </div>
 {% endblock %}

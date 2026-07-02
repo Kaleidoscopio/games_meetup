@@ -115,3 +115,32 @@ Notes for production:
 - Passwords are hashed with Werkzeug's `generate_password_hash`
   (PBKDF2) — never stored in plain text.
 - Password reset tokens are single-use and expire after 30 minutes.
+
+## Translations
+
+-  Extract all marked strings into a template file
+```
+pybabel extract -F babel.cfg -o messages.pot .
+```
+
+- Initialize a new language (repeat per language)
+```
+pybabel init -i messages.pot -d translations -l de
+pybabel init -i messages.pot -d translations -l it
+```
+
+- This creates translation files in:
+```bash
+/lang/LC_MESSAGES/messages.po   # This is the file that needs to be translated
+```
+
+- After translators fill in the .po files, compile them:
+```
+pybabel compile -d translations
+```
+
+- When you add/change strings later, re-extract and merge:
+```
+pybabel extract -F babel.cfg -o messages.pot .
+pybabel update -i messages.pot -d translations
+```

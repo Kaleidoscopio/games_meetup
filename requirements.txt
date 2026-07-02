@@ -11,6 +11,9 @@ psycopg2-binary==2.9.12
 Flask-Login==0.6.3
 Werkzeug==3.0.3
 
+# Internationalization (i18n) support for multi-language translations
+Flask-Babel==4.0.0
+
 # Sending e-mail (password recovery, listing notifications)
 Flask-Mail==0.10.0
 email-validator==2.3.0
@@ -26,6 +29,9 @@ APScheduler==3.10.4
 # .ics calendar file generation for meeting invites (free, no Google API costs)
 ics==0.7.2
 TatSu==5.8.3
+
+# Production WSGI server (used in production)
+gunicorn==23.0.0
 
 # Loads configuration from a local .env file so secrets are never
 # hard-coded in source control

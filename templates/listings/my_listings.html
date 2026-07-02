@@ -1,18 +1,18 @@
 {% extends "base.html" %}
-{% block title %}My games - Games Meetup{% endblock %}
+{% block title %}{{ _('My games') }} - Games Meetup{% endblock %}
 {% block content %}
-<h2>My games</h2>
+<h2>{{ _('My games') }}</h2>
 
-<h3>Listings I created</h3>
+<h3>{{ _('Listings I created') }}</h3>
 {% if not created %}
-  <div class="card"><p class="help-text">You haven't created any listings yet.</p></div>
+  <div class="card"><p class="help-text">{{ _('You haven\'t created any listings yet.') }}</p></div>
 {% endif %}
 {% for listing in created %}
   <a href="{{ url_for('listings.detail', listing_id=listing.id) }}" style="text-decoration:none;color:inherit;">
     <div class="card listing-card">
       <h3>{{ listing.game_name }}</h3>
       <span class="badge {{ 'badge-closed' if not listing.is_open() else 'badge-open' }}">
-        {{ 'Open' if listing.is_open() else 'Closed' }}
+        {{ _('Open') if listing.is_open() else _('Closed') }}
       </span>
       <p class="meta-row"><span class="icon">📅</span>{{ listing.game_datetime.strftime('%a %d %b %Y, %H:%M') }}</p>
       <p class="meta-row"><span class="icon">👥</span>{{ listing.spots_taken() }} / {{ listing.players_required }} players</p>
@@ -20,19 +20,19 @@
   </a>
 {% endfor %}
 
-<h3>Listings I joined</h3>
+<h3>{{ _('Listings I joined') }}</h3>
 {% if not joined %}
-  <div class="card"><p class="help-text">You haven't joined any listings yet. <a href="{{ url_for('listings.browse') }}">Browse open games</a></p></div>
+  <div class="card"><p class="help-text">{{ _('You haven\'t joined any listings yet. <a href="{{ url_for(\'listings.browse\') }}">Browse open games</a>') }}</p></div>
 {% endif %}
 {% for listing in joined %}
   <a href="{{ url_for('listings.detail', listing_id=listing.id) }}" style="text-decoration:none;color:inherit;">
     <div class="card listing-card">
       <h3>{{ listing.game_name }}</h3>
       <span class="badge {{ 'badge-closed' if not listing.is_open() else 'badge-open' }}">
-        {{ 'Open' if listing.is_open() else 'Closed' }}
+        {{ _('Open') if listing.is_open() else _('Closed') }}
       </span>
       <p class="meta-row"><span class="icon">📅</span>{{ listing.game_datetime.strftime('%a %d %b %Y, %H:%M') }}</p>
-      <p class="meta-row"><span class="icon">🙋</span>Organised by {{ listing.creator.username }}</p>
+      <p class="meta-row"><span class="icon">🙋</span>{{ _('Organised by') }} {{ listing.creator.username }}</p>
     </div>
   </a>
 {% endfor %}

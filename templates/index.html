@@ -1,20 +1,20 @@
 {% extends "base.html" %}
-{% block title %}Games Meetup - Find your next game{% endblock %}
+{% block title %}Games Meetup - {{ _('Find your next game') }}{% endblock %}
 {% block content %}
 <div class="card" style="text-align:center;">
   <h1>🎲 Games Meetup</h1>
-  <p>Find players. Arrange games. Online or at your local hobby shop.</p>
+  <p>{{ _('Find players. Arrange games. Online or at your local hobby shop.') }}</p>
   <div class="btn-row" style="flex-direction:column;">
-    <a class="btn btn-primary" href="{{ url_for('auth.register') }}">Create a free account</a>
-    <a class="btn btn-secondary" href="{{ url_for('auth.login') }}">Log in</a>
+    <a class="btn btn-primary" href="{{ url_for('auth.register') }}">{{ _('Create a free account') }}</a>
+    <a class="btn btn-secondary" href="{{ url_for('auth.login') }}">{{ _('Log in') }}</a>
   </div>
 </div>
 
 <div class="card">
-  <h3>How it works</h3>
-  <p class="meta-row">1. Post a listing with your game, date/time, location and how many players you need.</p>
-  <p class="meta-row">2. Other players can enroll and add notes (faction, deck, character, etc).</p>
-  <p class="meta-row">3. Message each other to sort out the details.</p>
-  <p class="meta-row">4. Close the listing once it's arranged - everyone gets a calendar invite.</p>
+  <h3>{{ _('How it works') }}</h3>
+  <p class="meta-row">{{ _('1. Post a listing with your game, date/time, location and how many players you need.') }}</p>
+  <p class="meta-row">{{ _('2. Other players can enroll and add notes (faction, deck, character, etc).') }}</p>
+  <p class="meta-row">{{ _('3. Message each other to sort out the details.') }}</p>
+  <p class="meta-row">{{ _('4. Close the listing once it\'s arranged - everyone gets a calendar invite.') }}</p>
 </div>
 {% endblock %}

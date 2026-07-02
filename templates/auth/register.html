@@ -1,14 +1,14 @@
 {% extends "base.html" %}
-{% block title %}Register - Games Meetup{% endblock %}
+{% block title %}{{ _('Register - Games Meetup') }}{% endblock %}
 {% block content %}
 <div class="card">
-  <h2>Create your account</h2>
+  <h2>{{ _('Create your account') }}</h2>
   <form method="POST" novalidate>
     {{ form.hidden_tag() }}
 
     <div class="form-group">
       {{ form.username.label }}
-      {{ form.username(placeholder="e.g. dungeon_master_42") }}
+      {{ form.username(placeholder=_('e.g. dungeon_master_42')) }}
       {% for error in form.username.errors %}<div class="field-error">{{ error }}</div>{% endfor %}
     </div>
 
@@ -20,18 +20,18 @@
 
     <div class="form-group">
       {{ form.password.label }}
-      {{ form.password(placeholder="At least 8 characters") }}
+      {{ form.password(placeholder=_('At least 8 characters')) }}
       {% for error in form.password.errors %}<div class="field-error">{{ error }}</div>{% endfor %}
     </div>
 
     <div class="form-group">
       {{ form.confirm_password.label }}
-      {{ form.confirm_password() }}
+      {{ form.confirm_password(placeholder=_('Confirm your password')) }}
       {% for error in form.confirm_password.errors %}<div class="field-error">{{ error }}</div>{% endfor %}
     </div>
 
     {{ form.submit(class_="btn btn-primary") }}
   </form>
-  <p class="help-text">Already have an account? <a href="{{ url_for('auth.login') }}">Log in</a></p>
+  <p class="help-text">{{ _('Already have an account?') }} <a href="{{ url_for('auth.login') }}">{{ _('Log in') }}</a></p>
 </div>
 {% endblock %}

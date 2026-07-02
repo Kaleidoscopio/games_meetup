@@ -11,8 +11,10 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_mail import Mail
 from flask_wtf import CSRFProtect
+from flask_babel import Babel
 from apscheduler.schedulers.background import BackgroundScheduler
 
+babel = Babel()
 db = SQLAlchemy()
 login_manager = LoginManager()
 mail = Mail()

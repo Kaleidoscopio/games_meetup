@@ -74,3 +74,13 @@ class Config:
     # to admin, so there is always a way into the admin panel without
     # touching the database by hand.
     INITIAL_ADMIN_EMAIL = os.environ.get("INITIAL_ADMIN_EMAIL", "")
+
+    # --- Internationalization ------------------------------------------------
+    LANGUAGES = {
+        "en": "English",
+        "pt": "Português",
+        "es": "Español",
+        "fr": "Français",
+    }
+    BABEL_DEFAULT_LOCALE = "en"
+    BABEL_TRANSLATION_DIRECTORIES = os.path.join(BASE_DIR, "translations")

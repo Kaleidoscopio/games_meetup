@@ -1,14 +1,14 @@
 {% extends "base.html" %}
-{% block title %}Chat with {{ other_user.username }} - Games Meetup{% endblock %}
+{% block title %}{{ _('Chat with') }} {{ other_user.username }} - Games Meetup{% endblock %}
 {% block content %}
 <h2>{{ other_user.username }}</h2>
 {% if listing %}
-  <p class="help-text">About: <a href="{{ url_for('listings.detail', listing_id=listing.id) }}">{{ listing.game_name }}</a></p>
+  <p class="help-text">{{ _('About:') }} <a href="{{ url_for('listings.detail', listing_id=listing.id) }}">{{ listing.game_name }}</a></p>
 {% endif %}
 
 <div class="card">
   {% if not messages %}
-    <p class="help-text">Say hello to start the conversation.</p>
+    <p class="help-text">{{ _('Say hello to start the conversation.') }}</p>
   {% endif %}
   {% for m in messages %}
     <div class="msg-bubble {{ 'msg-mine' if m.sender_id == current_user.id else 'msg-theirs' }}">
@@ -22,7 +22,7 @@
   <form method="POST">
     {{ form.hidden_tag() }}
     <div class="form-group">
-      {{ form.body(placeholder="Type your message...") }}
+      {{ form.body(placeholder=_('Type your message...')) }}
       {% for error in form.body.errors %}<div class="field-error">{{ error }}</div>{% endfor %}
     </div>
     {{ form.submit(class_="btn btn-primary") }}

@@ -1,8 +1,8 @@
-<p>Hi,</p>
+<p>{{ _('Hi,') }}</p>
 {% if auto_closed %}
-<p>The listing <strong>{{ listing.game_name }}</strong> was automatically closed because its game date has passed.</p>
+<p>{{ _('The listing') }} <strong>{{ listing.game_name }}</strong> {{ _('was automatically closed because its game date has passed.') }}</p>
 {% else %}
-<p>The listing <strong>{{ listing.game_name }}</strong> has been confirmed and closed by the organiser. Your game is on!</p>
+<p>{{ _('The listing') }} <strong>{{ listing.game_name }}</strong> {{ _('has been confirmed and closed by the organiser. Your game is on!') }}</p>
 {% endif %}
 <p>
   <strong>Game:</strong> {{ listing.game_name }}<br>
@@ -10,5 +10,5 @@
   <strong>Where:</strong> {{ listing.location_display() }}<br>
   <strong>Organiser:</strong> {{ listing.creator.username }}
 </p>
-<p>A calendar invite (.ics file) is attached - open it to add the game to your calendar.</p>
+<p>{{ _('A calendar invite (.ics file) is attached - open it to add the game to your calendar.') }}</p>
 <p>- Games Meetup</p>

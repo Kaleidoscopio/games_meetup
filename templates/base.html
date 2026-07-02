@@ -11,14 +11,26 @@
 <body>
 
   <header class="topbar">
-    <a href="{{ url_for('index') }}" class="brand">Games<span>Meetup</span></a>
+    <div class="topbar-brand-group">
+      <a href="{{ url_for('index') }}" class="brand">Games<span>Meetup</span></a>
+      <div class="lang-switcher-topbar">
+        <span class="lang-icon" aria-hidden="true">🌐</span>
+        <select onchange="window.location.href='/set-language/' + this.value" aria-label="{{ _('Language') }}">
+          {% for code, name in available_languages.items() %}
+            <option value="{{ code }}" title="{{ name }}" {{ 'selected' if code == get_locale() }}>{{ code|upper }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
     {% if current_user.is_authenticated %}
     <nav class="topbar-nav">
-      <a href="{{ url_for('listings.browse') }}">Browse</a>
-      <a href="{{ url_for('listings.create') }}">New listing</a>
-      <a href="{{ url_for('messaging.inbox') }}">Messages</a>
-      {% if current_user.is_admin %}<a href="{{ url_for('admin.dashboard') }}">Admin</a>{% endif %}
-      <a href="{{ url_for('auth.logout') }}">Log out</a>
+      <a href="{{ url_for('listings.browse') }}">{{ _('Browse') }}</a>
+      <a href="{{ url_for('listings.create') }}">{{ _('New listing') }}</a>
+      <a href="{{ url_for('messaging.inbox') }}">{{ _('Messages') }}
+        {% if unread_message_count > 0 %}<span class="nav-badge-inline">{{ unread_message_count }}</span>{% endif %}
+      </a>
+      {% if current_user.is_admin %}<a href="{{ url_for('admin.dashboard') }}">{{ _('Admin') }}</a>{% endif %}
+      <a href="{{ url_for('auth.logout') }}">{{ _('Log out') }}</a>
     </nav>
     {% endif %}
   </header>
@@ -38,24 +50,45 @@
   {% if current_user.is_authenticated %}
   <nav class="bottom-nav">
     <a href="{{ url_for('listings.browse') }}" class="{{ 'active' if request.endpoint == 'listings.browse' }}">
-      <span class="icon">🎲</span>Browse
+      <span class="icon">🎲</span>{{ _('Browse') }}
     </a>
     <a href="{{ url_for('listings.create') }}" class="{{ 'active' if request.endpoint == 'listings.create' }}">
-      <span class="icon">➕</span>New
+      <span class="icon">➕</span>{{ _('New') }}
     </a>
     <a href="{{ url_for('listings.my_listings') }}" class="{{ 'active' if request.endpoint == 'listings.my_listings' }}">
-      <span class="icon">📋</span>My games
+      <span class="icon">📋</span>{{ _('My games') }}
     </a>
     <a href="{{ url_for('messaging.inbox') }}" class="{{ 'active' if request.blueprint == 'messaging' }}">
-      <span class="icon">💬</span>Messages
+      <span class="icon">💬</span>{{ _('Messages') }}
+      {% if unread_message_count > 0 %}<span class="nav-badge">{{ unread_message_count }}</span>{% endif %}
     </a>
     {% if current_user.is_admin %}
     <a href="{{ url_for('admin.dashboard') }}" class="{{ 'active' if request.blueprint == 'admin' }}">
-      <span class="icon">⚙️</span>Admin
+      <span class="icon">⚙️</span>{{ _('Admin') }}
     </a>
     {% endif %}
   </nav>
   {% endif %}
+  
+  <footer class="site-footer">
+    <p>Games Meetup — {{ _('built by Daniel Almeida') }}</p>
+    <p>
+      Questions or issues?
+      <a href="#" id="admin-contact-link" rel="nofollow">{{ _('Contact the admin') }}</a>
+    </p>
+  </footer>
 
+  <script>
+    // Email is assembled here instead of written directly in the HTML,
+    // so basic scraper bots scanning the page source won't pick it up.
+    (function () {
+      var user = "gamesmeetuppt";
+      var domain = "gmail.com";
+      var link = document.getElementById("admin-contact-link");
+      if (link) {
+        link.href = "mailto:" + user + "@" + domain;
+      }
+    })();
+  </script>
 </body>
 </html>

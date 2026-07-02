@@ -1,0 +1,1126 @@
+# French translations for Games Meetup.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the Games Meetup project.
+# Daniel Almeida gamesmeetuppt@gmail.com, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Games Meetup 1.0\n"
+"Report-Msgid-Bugs-To: gamesmeetuppt@gmail.com\n"
+"POT-Creation-Date: 2026-07-02 16:00+0100\n"
+"PO-Revision-Date: 2026-07-02 16:00+0100\n"
+"Last-Translator: Daniel Almeida <gamesmeetuppt@gmail.com>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: templates/base.html:17 templates/base.html:41
+msgid "Browse"
+msgstr "Parcourir"
+
+#: templates/base.html:18
+msgid "New listing"
+msgstr "Créer une annonce"
+
+#: templates/base.html:19 templates/base.html:50
+#: templates/messaging/inbox.html:2 templates/messaging/inbox.html:4
+msgid "Messages"
+msgstr "Messages"
+
+#: templates/admin/users.html:7 templates/base.html:20 templates/base.html:54
+msgid "Admin"
+msgstr "Admin"
+
+#: templates/base.html:21
+msgid "Log out"
+msgstr "Se déconnecter"
+
+#: templates/base.html:44 templates/messaging/inbox.html:17
+msgid "New"
+msgstr "Nouveau"
+
+#: templates/base.html:47 templates/listings/my_listings.html:2
+#: templates/listings/my_listings.html:4
+msgid "My games"
+msgstr "Mes parties"
+
+#: templates/base.html:61
+msgid "built by Daniel Almeida"
+msgstr "développé par Daniel Almeida"
+
+#: templates/base.html:64
+msgid "Contact the admin"
+msgstr "Contacter l'administrateur"
+
+#: templates/index.html:2
+msgid "Find your next game"
+msgstr "Trouvez votre prochaine partie"
+
+#: templates/index.html:6
+msgid "Find players. Arrange games. Online or at your local hobby shop."
+msgstr "Trouvez des joueurs. Organisez des parties. En ligne ou dans votre boutique de jeux locale."
+
+#: templates/index.html:8
+msgid "Create a free account"
+msgstr "Créer un compte gratuit"
+
+#: templates/auth/login.html:5 templates/auth/login.html:26
+#: templates/auth/register.html:35 templates/index.html:9
+msgid "Log in"
+msgstr "Se connecter"
+
+#: templates/index.html:14
+msgid "How it works"
+msgstr "Comment ça marche"
+
+#: templates/index.html:15
+msgid ""
+"1. Post a listing with your game, date/time, location and how many "
+"players you need."
+msgstr "1. Publiez une annonce avec votre jeu, la date/heure, le lieu et le nombre de joueurs requis."
+
+#: templates/index.html:16
+msgid "2. Other players can enroll and add notes (faction, deck, character, etc)."
+msgstr "2. Les autres joueurs peuvent s'inscrire et ajouter des notes (faction, deck, personnage, etc)."
+
+#: templates/index.html:17
+msgid "3. Message each other to sort out the details."
+msgstr "3. Échangez des messages pour régler les détails."
+
+#: templates/index.html:18
+msgid "4. Close the listing once it's arranged - everyone gets a calendar invite."
+msgstr "4. Clôturez l'annonce une fois organisée - tout le monde reçoit une invitation d'agenda."
+
+#: templates/admin/dashboard.html:2
+msgid "Admin - Games Meetup"
+msgstr "Admin - Games Meetup"
+
+#: templates/admin/dashboard.html:4
+msgid "Admin dashboard"
+msgstr "Tableau de bord admin"
+
+#: templates/admin/dashboard.html:7 templates/admin/users.html:4
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: templates/admin/dashboard.html:8
+msgid "Open listings"
+msgstr "Annonces ouvertes"
+
+#: templates/admin/dashboard.html:9
+msgid "Closed listings"
+msgstr "Annonces clôturées"
+
+#: templates/admin/dashboard.html:10 templates/admin/shops.html:4
+msgid "Hobby shops"
+msgstr "Boutiques de jeux"
+
+#: templates/admin/dashboard.html:11
+msgid "Messages sent"
+msgstr "Messages envoyés"
+
+#: templates/admin/dashboard.html:15
+msgid "Maintenance"
+msgstr "Maintenance"
+
+#: templates/admin/dashboard.html:17
+msgid "Manage hobby shops"
+msgstr "Gérer les boutiques"
+
+#: templates/admin/dashboard.html:18
+msgid "Manage users"
+msgstr "Gérer les utilisateurs"
+
+#: templates/admin/dashboard.html:19
+msgid "Manage listings"
+msgstr "Gérer les annonces"
+
+#: templates/admin/dashboard.html:25
+msgid "Listings are automatically closed"
+msgstr "Les annonces sont clôturées automatiquement"
+
+#: templates/admin/dashboard.html:25
+msgid "days"
+msgstr "jours"
+
+#: templates/admin/dashboard.html:26
+msgid "after their game date by a background job that checks every hour."
+msgstr "après la date de jeu par une tâche de fond qui vérifie toutes les heures."
+
+#: templates/admin/listings.html:2
+msgid "Manage listings - Admin"
+msgstr "Gérer les annonces - Admin"
+
+#: templates/admin/listings.html:4
+msgid "Listings"
+msgstr "Annonces"
+
+#: templates/admin/listings.html:7
+msgid "Game"
+msgstr "Jeu"
+
+#: templates/admin/listings.html:7
+msgid "Date"
+msgstr "Date"
+
+#: templates/admin/listings.html:7
+msgid "Status"
+msgstr "Statut"
+
+#: templates/admin/listings.html:7
+msgid "Organiser"
+msgstr "Organisateur"
+
+#: templates/admin/listings.html:18
+msgid "Force close"
+msgstr "Forcer la clôture"
+
+#: templates/admin/listings.html:22
+msgid "Delete this listing? This cannot be undone."
+msgstr "Supprimer cette annonce ? Cette action est irréversible."
+
+#: templates/admin/listings.html:24 templates/admin/shops.html:42
+#: templates/admin/users.html:23
+msgid "Delete"
+msgstr "Supprimer"
+
+#: templates/admin/shops.html:2
+msgid "Manage hobby shops - Admin"
+msgstr "Gérer les boutiques - Admin"
+
+#: templates/admin/shops.html:7
+msgid "Add a shop"
+msgstr "Ajouter une boutique"
+
+#: templates/admin/shops.html:28
+msgid "Name"
+msgstr "Nom"
+
+#: templates/admin/shops.html:28
+msgid "Region"
+msgstr "Région"
+
+#: templates/admin/shops.html:28
+msgid "Active"
+msgstr "Active"
+
+#: templates/admin/shops.html:33 templates/admin/users.html:12
+msgid "Yes"
+msgstr "Oui"
+
+#: templates/admin/shops.html:33 templates/admin/users.html:12
+msgid "No"
+msgstr "Non"
+
+#: templates/admin/shops.html:37
+msgid "Toggle"
+msgstr "Basculer"
+
+#: templates/admin/shops.html:40
+msgid "Are you sure you want to delete this shop?"
+msgstr "Êtes-vous sûr de vouloir supprimer cette boutique ?"
+
+#: templates/admin/users.html:2
+msgid "Manage users - Admin"
+msgstr "Gérer les utilisateurs - Admin"
+
+#: templates/admin/users.html:7
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: templates/admin/users.html:7
+msgid "Email"
+msgstr "E-mail"
+
+#: templates/admin/users.html:7
+msgid "Joined"
+msgstr "Inscription"
+
+#: templates/admin/users.html:18
+msgid "Toggle admin"
+msgstr "Basculer le statut admin"
+
+#: templates/admin/users.html:26
+msgid "(you)"
+msgstr "(vous)"
+
+#: templates/auth/forgot_password.html:2
+msgid "Forgot password - Games Meetup"
+msgstr "Mot de passe oublié - Games Meetup"
+
+#: templates/auth/forgot_password.html:5
+msgid "Reset your password"
+msgstr "Réinitialiser votre mot de passe"
+
+#: templates/auth/forgot_password.html:6
+msgid "Enter your account email and we'll send you a link to reset your password."
+msgstr "Saisissez l'e-mail de votre compte et nous vous enverrons un lien pour réinitialiser votre mot de passe."
+
+#: templates/auth/forgot_password.html:16
+msgid "Back to login"
+msgstr "Retour à la connexion"
+
+#: templates/auth/login.html:2
+msgid "Log in - Games Meetup"
+msgstr "Connexion - Games Meetup"
+
+#: templates/auth/login.html:23
+msgid "Keep me signed in"
+msgstr "Rester connecté"
+
+#: templates/auth/login.html:29
+msgid "Forgot your password?"
+msgstr "Mot de passe oublié ?"
+
+#: templates/auth/login.html:31
+msgid "No account yet?"
+msgstr "Pas encore de compte ?"
+
+#: templates/auth/login.html:31
+msgid "Register"
+msgstr "S'inscrire"
+
+#: templates/auth/register.html:2
+msgid "Register - Games Meetup"
+msgstr "Inscription - Games Meetup"
+
+#: templates/auth/register.html:5
+msgid "Create your account"
+msgstr "Créer votre compte"
+
+#: templates/auth/register.html:11
+msgid "e.g. dungeon_master_42"
+msgstr "ex: dungeon_master_42"
+
+#: templates/auth/register.html:23
+msgid "At least 8 characters"
+msgstr "Au moins 8 caractères"
+
+#: templates/auth/register.html:29
+msgid "Confirm your password"
+msgstr "Confirmez votre mot de passe"
+
+#: templates/auth/register.html:35
+msgid "Already have an account?"
+msgstr "Vous avez déjà un compte ?"
+
+#: templates/auth/reset_password.html:2
+msgid "Set a new password - Games Meetup"
+msgstr "Définir un nouveau mot de passe - Games Meetup"
+
+#: templates/auth/reset_password.html:5
+msgid "Set a new password"
+msgstr "Définir un nouveau mot de passe"
+
+#: templates/email/listing_closed.html:1 templates/email/new_enrollment.html:1
+msgid "Hi,"
+msgstr "Bonjour,"
+
+#: templates/email/listing_closed.html:3 templates/email/listing_closed.html:5
+msgid "The listing"
+msgstr "L'annonce"
+
+#: templates/email/listing_closed.html:3
+msgid "was automatically closed because its game date has passed."
+msgstr "a été automatiquement clôturée car la date de la partie est passée."
+
+#: templates/email/listing_closed.html:5
+msgid "has been confirmed and closed by the organiser. Your game is on!"
+msgstr "a été confirmée et clôturée par l'organisateur. Votre partie est validée !"
+
+#: templates/email/listing_closed.html:13
+msgid ""
+"A calendar invite (.ics file) is attached - open it to add the game to "
+"your calendar."
+msgstr "Une invitation d'agenda (fichier .ics) est jointe - ouvrez-la pour ajouter la partie à votre calendrier."
+
+#: templates/email/new_enrollment.html:2
+msgid "just joined your listing"
+msgstr "vient de rejoindre votre annonce"
+
+#: templates/email/new_enrollment.html:3
+msgid "Spots filled:"
+msgstr "Places occupées :"
+
+#: templates/email/new_enrollment.html:4
+msgid "Log in to Games Meetup to message them and sort out the details."
+msgstr "Connectez-vous à Games Meetup pour leur envoyer un message et régler les détails."
+
+#: templates/email/new_message.html:1 templates/email/reset_password.html:1
+msgid "Hi"
+msgstr "Bonjour"
+
+#: templates/email/new_message.html:2
+msgid "You have a new message from"
+msgstr "Vous avez un nouveau message de"
+
+#: templates/email/new_message.html:2
+msgid "about"
+msgstr "au sujet de"
+
+#: templates/email/new_message.html:2
+msgid "on Games Meetup."
+msgstr "sur Games Meetup."
+
+#: templates/email/new_message.html:3
+msgid "Log in to Games Meetup to read and reply."
+msgstr "Connectez-vous à Games Meetup pour lire et répondre."
+
+#: templates/email/reset_password.html:2
+msgid ""
+"We received a request to reset your Games Meetup password. Click the link"
+" below to choose a new one. This link expires in 30 minutes."
+msgstr "Nous avons reçu une demande de réinitialisation de votre mot de passe Games Meetup. Cliquez sur le lien ci-dessous pour en choisir un nouveau. Ce lien expire dans 30 minutes."
+
+#: templates/email/reset_password.html:3
+msgid "Reset my password"
+msgstr "Réinitialiser mon mot de passe"
+
+#: templates/email/reset_password.html:4
+msgid "If you didn't request this, you can safely ignore this email."
+msgstr "Si vous n'avez pas demandé cela, vous pouvez ignorer cet e-mail en toute sécurité."
+
+#: templates/errors/403.html:2 templates/errors/403.html:5
+msgid "Access denied"
+msgstr "Accès refusé"
+
+#: templates/errors/403.html:6
+msgid "You don't have permission to view this page."
+msgstr "Vous n'avez pas la permission de consulter cette page."
+
+#: templates/errors/403.html:7 templates/errors/404.html:7
+msgid "Go home"
+msgstr "Retour à l'accueil"
+
+#: templates/errors/404.html:2 templates/errors/404.html:5
+msgid "Page not found"
+msgstr "Page introuvable"
+
+#: templates/errors/404.html:6
+msgid "That page doesn't exist."
+msgstr "Cette page n'existe pas."
+
+#: templates/listings/create.html:2
+msgid "New listing - Games Meetup"
+msgstr "Nouvelle annonce - Games Meetup"
+
+#: templates/listings/create.html:5
+msgid "Create a listing"
+msgstr "Créer une annonce"
+
+#: templates/listings/create.html:24
+msgid "24-hour format, e.g. 19:30"
+msgstr "Format 24 heures, ex: 19:30"
+
+#: templates/listings/create.html:36
+msgid ""
+"Don't see your shop? Ask an admin to add it, or switch to a personalized "
+"location."
+msgstr "Vous ne voyez pas votre boutique ? Demandez à un admin de l'ajouter, ou passez à un lieu personnalisé."
+
+#: templates/listings/create.html:41
+msgid "e.g. Online (Discord), or a street address"
+msgstr "ex: En ligne (Discord), ou une adresse postale"
+
+#: templates/listings/create.html:44
+msgid "e.g. Lisbon, Online"
+msgstr "ex: Paris, En ligne"
+
+#: templates/listings/create.html:55
+msgid "Any extra details players should know"
+msgstr "Tout détail supplémentaire que les joueurs devraient savoir"
+
+#: templates/listings/detail.html:14 templates/listings/list.html:36
+#: templates/listings/my_listings.html:35
+msgid "Organised by"
+msgstr "Organisé par"
+
+#: templates/listings/detail.html:18
+msgid "you"
+msgstr "vous"
+
+#: templates/listings/detail.html:25
+msgid "Players"
+msgstr "Joueurs"
+
+#: templates/listings/detail.html:27
+msgid "No one has joined yet."
+msgstr "Personne n'a encore rejoint."
+
+#: templates/listings/detail.html:36
+msgid "Message"
+msgstr "Message"
+
+#: templates/listings/detail.html:45
+msgid "Organiser actions"
+msgstr "Actions de l'organisateur"
+
+#: templates/listings/detail.html:46
+msgid ""
+"Once you've arranged the game, close the listing to notify everyone and "
+"send calendar invites."
+msgstr "Une fois la partie organisée, clôturez l'annonce pour en notifier tout le monde et envoyer les invitations d'agenda."
+
+#: templates/listings/detail.html:49
+msgid "Close listing &amp; send invites"
+msgstr "Clôturer l'annonce et envoyer les invitations"
+
+#: templates/listings/detail.html:54
+msgid "You're enrolled in this game."
+msgstr "Vous êtes inscrit à cette partie."
+
+#: templates/listings/detail.html:57
+msgid "Leave this listing"
+msgstr "Quitter cette annonce"
+
+#: templates/listings/detail.html:61
+msgid "This listing is full."
+msgstr "Cette annonce est complète."
+
+#: templates/listings/detail.html:64
+msgid "Join this game"
+msgstr "Rejoindre cette partie"
+
+#: templates/listings/detail.html:69
+msgid "e.g. Playing Orks / bringing my own deck"
+msgstr "ex: Je joue Orks / j'apporte mon propre deck"
+
+#: templates/listings/detail.html:77
+msgid "This listing is closed"
+msgstr "Cette annonce est clôturée"
+
+#: templates/listings/list.html:2
+msgid "Browse games"
+msgstr "Parcourir les parties"
+
+#: templates/listings/list.html:4
+msgid "Open games"
+msgstr "Parties ouvertes"
+
+#: templates/listings/list.html:22
+msgid "No open listings match your filters yet."
+msgstr "Aucune annonce ouverte ne correspond à vos filtres pour le moment."
+
+#: templates/listings/list.html:22
+msgid "Create one?"
+msgstr "En créer une ?"
+
+#: templates/listings/list.html:31
+msgid "Full"
+msgstr "Complet"
+
+#: templates/listings/list.html:31 templates/listings/my_listings.html:15
+#: templates/listings/my_listings.html:32
+msgid "Open"
+msgstr "Ouvert"
+
+#: templates/listings/my_listings.html:6
+msgid "Listings I created"
+msgstr "Annonces créées"
+
+#: templates/listings/my_listings.html:8
+msgid "You haven't created any listings yet."
+msgstr "Vous n'avez encore créé aucune annonce."
+
+#: templates/listings/my_listings.html:15
+#: templates/listings/my_listings.html:32
+msgid "Closed"
+msgstr "Clôturé"
+
+#: templates/listings/my_listings.html:23
+msgid "Listings I joined"
+msgstr "Annonces rejointes"
+
+#: templates/listings/my_listings.html:25
+msgid ""
+"You haven't joined any listings yet. <a href=\"{{ "
+"url_for('listings.browse') }}\">Browse open games</a>"
+msgstr "Vous n'avez encore rejoint aucune annonce. <a href=\"{{ url_for('listings.browse') }}\">Parcourir les parties ouvertes</a>"
+
+#: templates/messaging/inbox.html:7
+msgid ""
+"No conversations yet. Message someone from a listing's player list to "
+"start one."
+msgstr "Pas encore de conversation. Envoyez un message à quelqu'un depuis la liste des joueurs d'une annonce pour commencer."
+
+#: templates/messaging/thread.html:2
+msgid "Chat with"
+msgstr "Discussion avec"
+
+#: templates/messaging/thread.html:6
+msgid "About:"
+msgstr "Sujet :"
+
+#: templates/messaging/thread.html:11
+msgid "Say hello to start the conversation."
+msgstr "Dites bonjour pour démarrer la conversation."
+
+#: templates/messaging/thread.html:25
+msgid "Type your message..."
+msgstr "Écrivez votre message..."
+
+#: utils/ics_utils.py:26
+#, python-format
+msgid "Organised via Games Meetup by %(username)s."
+msgstr "Organisé via Games Meetup par %(username)s."
+
+#: utils/ics_utils.py:27
+#, python-format
+msgid "Players required: %(count)s"
+msgstr "Joueurs requis : %(count)s"
+
+#: utils/ics_utils.py:31
+#, python-format
+msgid "Notes: %(notes)s"
+msgstr "Notes : %(notes)s"
+
+#: venv/lib/python3.13/site-packages/click/_termui_impl.py:192
+msgid "d"
+msgstr "d"
+
+#: venv/lib/python3.13/site-packages/click/_termui_impl.py:709
+#, python-brace-format
+msgid "{editor}: Editing failed"
+msgstr "{editor} : Échec de l'édition"
+
+#: venv/lib/python3.13/site-packages/click/_termui_impl.py:713
+#, python-brace-format
+msgid "{editor}: Editing failed: {e}"
+msgstr "{editor} : Échec de l'édition : {e}"
+
+#: venv/lib/python3.13/site-packages/click/_winconsole.py:156
+#: venv/lib/python3.13/site-packages/click/_winconsole.py:173
+#, python-brace-format
+msgid "Windows error: {error}"
+msgstr "Erreur Windows : {error}"
+
+#: venv/lib/python3.13/site-packages/click/core.py:100
+msgid "deprecated"
+msgstr "obsolète"
+
+#: venv/lib/python3.13/site-packages/click/core.py:1254
+msgid "Options"
+msgstr "Options"
+
+#: venv/lib/python3.13/site-packages/click/core.py:1329
+#, python-brace-format
+msgid "Got unexpected extra argument ({args})"
+msgid_plural "Got unexpected extra arguments ({args})"
+msgstr[0] "Argument supplémentaire inattendu reçu ({args})"
+msgstr[1] "Arguments supplémentaires inattendus reçus ({args})"
+
+#: venv/lib/python3.13/site-packages/click/core.py:1345
+#, python-brace-format
+msgid "DeprecationWarning: The command {name!r} is deprecated.{extra_message}"
+msgstr "DeprecationWarning : La commande {name!r} est obsolète.{extra_message}"
+
+#: venv/lib/python3.13/site-packages/click/core.py:1532
+msgid "Aborted!"
+msgstr "Abandonné !"
+
+#: venv/lib/python3.13/site-packages/click/core.py:1919
+msgid "Commands"
+msgstr "Commandes"
+
+#: venv/lib/python3.13/site-packages/click/core.py:1950
+msgid "Missing command."
+msgstr "Commande manquante."
+
+#: venv/lib/python3.13/site-packages/click/core.py:2480
+msgid "Value must be an iterable."
+msgstr "La valeur doit être un itérable."
+
+#: venv/lib/python3.13/site-packages/click/core.py:2503
+#, python-brace-format
+msgid "Takes {nargs} values but 1 was given."
+msgid_plural "Takes {nargs} values but {len} were given."
+msgstr[0] "Prend {nargs} valeur mais 1 a été fournie."
+msgstr[1] "Prend {nargs} valeurs mais {len} ont été fournies."
+
+#: venv/lib/python3.13/site-packages/click/core.py:2700
+#, python-brace-format
+msgid ""
+"DeprecationWarning: The {param_type} {name!r} is "
+"deprecated.{extra_message}"
+msgstr "DeprecationWarning : Le {param_type} {name!r} est obsolète.{extra_message}"
+
+#: venv/lib/python3.13/site-packages/click/core.py:3117
+#, python-brace-format
+msgid "Name '{name}' defined twice"
+msgstr "Nom '{name}' défini deux fois"
+
+#: venv/lib/python3.13/site-packages/click/core.py:3133
+#, python-brace-format
+msgid "Boolean option {decl!r} cannot use the same flag for true/false."
+msgstr "L'option booléenne {decl!r} ne peut pas utiliser le même drapeau pour vrai/faux."
+
+#: venv/lib/python3.13/site-packages/click/core.py:3152
+#, python-brace-format
+msgid "Could not determine name for option with declarations {decls!r}"
+msgstr "Impossible de déterminer le nom de l'option avec les déclarations {decls!r}"
+
+#: venv/lib/python3.13/site-packages/click/core.py:3159
+#, python-brace-format
+msgid ""
+"No options defined but a name was passed ({name}). Did you mean to "
+"declare an argument instead? Did you mean to pass '--{name}'?"
+msgstr "Aucune option définie mais un nom a été transmis ({name}). Vouliez-vous déclarer un argument à la place ? Vouliez-vous passer '--{name}' ?"
+
+#: venv/lib/python3.13/site-packages/click/core.py:3236
+#, python-brace-format
+msgid "env var: {var}"
+msgstr "var env : {var}"
+
+#: venv/lib/python3.13/site-packages/click/core.py:3239
+#, python-brace-format
+msgid "default: {default}"
+msgstr "valeur par défaut : {default}"
+
+#: venv/lib/python3.13/site-packages/click/core.py:3243
+msgid "required"
+msgstr "obligatoire"
+
+#: venv/lib/python3.13/site-packages/click/core.py:3303
+msgid "(dynamic)"
+msgstr "(dynamique)"
+
+#: venv/lib/python3.13/site-packages/click/core.py:3600
+#, python-brace-format
+msgid "Arguments take exactly one parameter declaration, got {length}: {decls}."
+msgstr "Les arguments prennent exactement une déclaration de paramètre, {length} reçue(s) : {decls}."
+
+#: venv/lib/python3.13/site-packages/click/decorators.py:399
+msgid "Do you want to continue?"
+msgstr "Souhaitez-vous continuer ?"
+
+#: venv/lib/python3.13/site-packages/click/decorators.py:400
+msgid "Confirm the action without prompting."
+msgstr "Confirmer l'action sans confirmation textuelle."
+
+#: venv/lib/python3.13/site-packages/click/decorators.py:472
+#, python-format
+msgid "%(prog)s, version %(version)s"
+msgstr "%(prog)s, version %(version)s"
+
+#: venv/lib/python3.13/site-packages/click/decorators.py:546
+msgid "Show the version and exit."
+msgstr "Afficher la version et quitter."
+
+#: venv/lib/python3.13/site-packages/click/decorators.py:572
+msgid "Show this message and exit."
+msgstr "Afficher ce message et quitter."
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:29
+#, python-brace-format
+msgid "Did you mean {possibility}?"
+msgid_plural "(Did you mean one of: {possibilities}?)"
+msgstr[0] "Vouliez-vous dire {possibility} ?"
+msgstr[1] "(Vouliez-vous dire l'une de ces options : {possibilities} ?)"
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:62
+#: venv/lib/python3.13/site-packages/click/exceptions.py:108
+#: venv/lib/python3.13/site-packages/click/termui.py:228
+#, python-brace-format
+msgid "Error: {message}"
+msgstr "Erreur : {message}"
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:99
+#, python-brace-format
+msgid "Try '{command} {option}' for help."
+msgstr "Essayez '{command} {option}' pour obtenir de l'aide."
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:152
+#, python-brace-format
+msgid "Invalid value: {message}"
+msgstr "Valeur invalide : {message}"
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:154
+#, python-brace-format
+msgid "Invalid value for {param_hint}: {message}"
+msgstr "Valeur invalide pour {param_hint} : {message}"
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:214
+msgid "Missing argument"
+msgstr "Argument manquant"
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:216
+msgid "Missing option"
+msgstr "Option manquante"
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:218
+msgid "Missing parameter"
+msgstr "Paramètre manquant"
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:220
+#, python-brace-format
+msgid "Missing {param_type}"
+msgstr "{param_type} manquant"
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:227
+#, python-brace-format
+msgid "Missing parameter: {param_name}"
+msgstr "Paramètre manquant : {param_name}"
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:249
+#, python-brace-format
+msgid "No such option {name!r}."
+msgstr "L'option {name!r} n'existe pas."
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:285
+#, python-brace-format
+msgid "No such command {name!r}."
+msgstr "La commande {name!r} n'existe pas."
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:350
+msgid "unknown error"
+msgstr "erreur inconnue"
+
+#: venv/lib/python3.13/site-packages/click/exceptions.py:357
+#, python-brace-format
+msgid "Could not open file {filename!r}: {message}"
+msgstr "Impossible d'ouvrir le fichier {filename!r} : {message}"
+
+#: venv/lib/python3.13/site-packages/click/formatting.py:167
+msgid "Usage:"
+msgstr "Usage :"
+
+#: venv/lib/python3.13/site-packages/click/parser.py:145
+#, python-brace-format
+msgid "Invalid start character for option ({option})"
+msgstr "Caractère de départ invalide pour l'option ({option})"
+
+#: venv/lib/python3.13/site-packages/click/parser.py:203
+#, python-brace-format
+msgid "Argument {name!r} takes {nargs} values."
+msgstr "L'argument {name!r} prend {nargs} valeurs."
+
+#: venv/lib/python3.13/site-packages/click/parser.py:382
+#, python-brace-format
+msgid "Option {name!r} does not take a value."
+msgstr "L'option {name!r} ne prend pas de valeur."
+
+#: venv/lib/python3.13/site-packages/click/parser.py:445
+#, python-brace-format
+msgid "Option {name!r} requires an argument."
+msgid_plural "Option {name!r} requires {nargs} arguments."
+msgstr[0] "L'option {name!r} requiert un argument."
+msgstr[1] "L'option {name!r} requiert {nargs} arguments."
+
+#: venv/lib/python3.13/site-packages/click/shell_completion.py:355
+msgid "Shell completion is not supported for Bash versions older than 4.4."
+msgstr "L'auto-complétion du shell n'est pas supportée pour les versions de Bash antérieures à 4.4."
+
+#: venv/lib/python3.13/site-packages/click/shell_completion.py:362
+msgid "Couldn't detect Bash version, shell completion is not supported."
+msgstr "Impossible de détecter la version de Bash, l'auto-complétion n'est pas supportée."
+
+#: venv/lib/python3.13/site-packages/click/termui.py:212
+msgid "Repeat for confirmation"
+msgstr "Répétez pour confirmation"
+
+#: venv/lib/python3.13/site-packages/click/termui.py:239
+msgid "Error: The two entered values do not match."
+msgstr "Erreur : Les deux valeurs saisies ne correspondent pas."
+
+#: venv/lib/python3.13/site-packages/click/termui.py:293
+msgid "Error: invalid input"
+msgstr "Erreur : saisie invalide"
+
+#: venv/lib/python3.13/site-packages/click/termui.py:679
+#: venv/lib/python3.13/site-packages/click/termui.py:685
+#, python-brace-format
+msgid "Unknown color {colour!r}"
+msgstr "Couleur inconnue {colour!r}"
+
+#: venv/lib/python3.13/site-packages/click/termui.py:934
+msgid "Press any key to continue..."
+msgstr "Appuyez sur n'importe quelle touche pour continuer..."
+
+#: venv/lib/python3.13/site-packages/click/types.py:392
+#, python-brace-format
+msgid ""
+"Choose from:\n"
+"\t{choices}"
+msgstr ""
+"Choisissez parmi :\n"
+"\t{choices}"
+
+#: venv/lib/python3.13/site-packages/click/types.py:429
+#, python-brace-format
+msgid "{value!r} is not {choice}."
+msgid_plural "{value!r} is not one of {choices}."
+msgstr[0] "{value!r} n'est pas {choice}."
+msgstr[1] "{value!r} ne fait pas partie des options suivantes : {choices}."
+
+#: venv/lib/python3.13/site-packages/click/types.py:435
+#, python-brace-format
+msgid "Choice({choices})"
+msgstr "Choix({choices})"
+
+#: venv/lib/python3.13/site-packages/click/types.py:523
+#, python-brace-format
+msgid "{value!r} does not match the format {format}."
+msgid_plural "{value!r} does not match the formats {formats}."
+msgstr[0] "{value!r} ne correspond pas au format {format}."
+msgstr[1] "{value!r} ne correspond pas aux formats {formats}."
+
+#: venv/lib/python3.13/site-packages/click/types.py:547
+#, python-brace-format
+msgid "{value!r} is not a valid {number_type}."
+msgstr "{value!r} n'est pas un {number_type} valide."
+
+#: venv/lib/python3.13/site-packages/click/types.py:632
+#, python-brace-format
+msgid "{value} is not in the range {range}."
+msgstr "{value} n'est pas dans l'intervalle {range}."
+
+#: venv/lib/python3.13/site-packages/click/types.py:819
+#, python-brace-format
+msgid "{value!r} is not a valid boolean. Recognized values: {states}"
+msgstr "{value!r} n'est pas un booléen valide. Valeurs acceptées : {states}"
+
+#: venv/lib/python3.13/site-packages/click/types.py:845
+#, python-brace-format
+msgid "{value!r} is not a valid UUID."
+msgstr "{value!r} n'est pas un UUID valide."
+
+#: venv/lib/python3.13/site-packages/click/types.py:1069
+msgid "file"
+msgstr "fichier"
+
+#: venv/lib/python3.13/site-packages/click/types.py:1071
+msgid "directory"
+msgstr "répertoire"
+
+#: venv/lib/python3.13/site-packages/click/types.py:1073
+msgid "path"
+msgstr "chemin"
+
+#: venv/lib/python3.13/site-packages/click/types.py:1119
+#, python-brace-format
+msgid "{name} {filename!r} does not exist."
+msgstr "Le {name} {filename!r} n'existe pas."
+
+#: venv/lib/python3.13/site-packages/click/types.py:1128
+#, python-brace-format
+msgid "{name} {filename!r} is a file."
+msgstr "Le {name} {filename!r} est un fichier."
+
+#: venv/lib/python3.13/site-packages/click/types.py:1136
+#, python-brace-format
+msgid "{name} {filename!r} is a directory."
+msgstr "Le {name} {filename!r} est un répertoire."
+
+#: venv/lib/python3.13/site-packages/click/types.py:1145
+#, python-brace-format
+msgid "{name} {filename!r} is not readable."
+msgstr "Le {name} {filename!r} n'est pas lisible."
+
+#: venv/lib/python3.13/site-packages/click/types.py:1154
+#, python-brace-format
+msgid "{name} {filename!r} is not writable."
+msgstr "Le {name} {filename!r} n'est pas scriptible."
+
+#: venv/lib/python3.13/site-packages/click/types.py:1163
+#, python-brace-format
+msgid "{name} {filename!r} is not executable."
+msgstr "Le {name} {filename!r} n'est pas exécutable."
+
+#: venv/lib/python3.13/site-packages/click/types.py:1235
+#, python-brace-format
+msgid "{len_type} values are required, but {len_value} was given."
+msgid_plural "{len_type} values are required, but {len_value} were given."
+msgstr[0] "{len_type} valeur est requise, mais {len_value} a été fournie."
+msgstr[1] "{len_type} valeurs sont requises, mais {len_value} ont été fournies."
+
+#: venv/lib/python3.13/site-packages/click/utils.py:357
+#: venv/lib/python3.13/site-packages/click/utils.py:378
+#, python-brace-format
+msgid "Unknown standard stream '{name}'"
+msgstr "Flux standard inconnu '{name}'"
+
+#: venv/lib/python3.13/site-packages/flask_wtf/file.py:55
+#: venv/lib/python3.13/site-packages/wtforms/validators.py:293
+#: venv/lib/python3.13/site-packages/wtforms/validators.py:323
+msgid "This field is required."
+msgstr "Ce champ est obligatoire."
+
+#: venv/lib/python3.13/site-packages/flask_wtf/file.py:94
+#, python-brace-format
+msgid "File does not have an approved extension: {extensions}"
+msgstr "Le fichier n'a pas une extension autorisée : {extensions}"
+
+#: venv/lib/python3.13/site-packages/flask_wtf/file.py:101
+msgid "File does not have an approved extension."
+msgstr "Le fichier n'a pas une extension autorisée."
+
+#: venv/lib/python3.13/site-packages/flask_wtf/file.py:140
+#, python-brace-format
+msgid "File must be between {min_size} and {max_size} bytes."
+msgstr "Le fichier doit faire entre {min_size} et {max_size} octets."
+
+#: venv/lib/python3.13/site-packages/wtforms/validators.py:86
+#, python-format
+msgid "Invalid field name '%s'."
+msgstr "Nom de champ invalide '%s'."
+
+#: venv/lib/python3.13/site-packages/wtforms/validators.py:99
+#, python-format
+msgid "Field must be equal to %(other_name)s."
+msgstr "Le champ doit être égal à %(other_name)s."
+
+#: venv/lib/python3.13/site-packages/wtforms/validators.py:146
+#, python-format
+msgid "Field must be at least %(min)d character long."
+msgid_plural "Field must be at least %(min)d characters long."
+msgstr[0] "Le champ doit contenir au moins %(min)d caractère."
+msgstr[1] "Le champ doit contenir au moins %(min)d caractères."
+
+#: venv/lib/python3.13/site-packages/wtforms/validators.py:152
+#, python-format
+msgid "Field cannot be longer than %(max)d character."
+msgid_plural "Field cannot be longer than %(max)d characters."
+msgstr[0] "Le champ ne peut pas dépasser %(max)d caractère."
+msgstr[1] "Le champ ne peut pas dépasser %(max)d caractères."
+
+#: venv/lib/python3.13/site-packages/wtforms/validators.py:158
+#, python-format
+msgid "Field must be exactly %(max)d character long."
+msgid_plural "Field must be exactly %(max)d characters long."
+msgstr[0] "Le champ doit faire exactement %(max)d caractère."
+msgstr[1] "Le champ doit faire exactement %(max)d caractères."
+
+#: venv/lib/python3.13/site-packages/wtforms/validators.py:164
+#, python-format
+msgid "Field must be between %(min)d and %(max)d characters long."
+msgstr "Le champ doit faire entre %(min)d et %(max)d caractères."
+
+#: venv/lib/python3.13/site-packages/wtforms/validators.py:216
+#, python-format
+msgid "Number must be at least %(min)s."
+msgstr "Le nombre doit être au moins %(min)s."
+
+#: venv/lib/python3.13/site-packages/wtforms/validators.py:219
+#, python-format
+msgid "Number must be at most %(max)s."
+msgstr "Le nombre doit être au maximum %(max)s."
+
+#: venv/lib/python3.13/site-packages/wtforms/validators.py:222
+#, python-format
+msgid "Number must be between %(min)s and %(max)s."
+msgstr "Le nombre doit être entre %(min)s et %(max)s."
+
+#: venv/lib/python3.13/site-packages/wtforms/validators.py:358
+msgid "Invalid input."
+msgstr "Saisie invalide."
+
+#: venv/lib/python3.13/site-packages/wtforms/validators.py:422
+msgid "Invalid email address."
+msgstr "Adresse e-mail invalide."
+
+#: venv/lib/python3.13/site-packages/wtforms/validators.py:460
+msgid "Invalid IP address."
+msgstr "Adresse IP invalide."
+
+#: venv/lib/python3.13/site-packages/wtforms/validators.py:503
+msgid "Invalid Mac address."
+msgstr "Adresse MAC invalide."
+
+#: venv/lib/python3.13/site-packages/wtforms/validators.py:540
+msgid "Invalid URL."
+msgstr "URL invalide."
+
+#: venv/lib/python3.13/site-packages/wtforms/validators.py:561
+msgid "Invalid UUID."
+msgstr "UUID invalide."
+
+#: venv/lib/python3.13/site-packages/wtforms/validators.py:594
+#, python-format
+msgid "Invalid value, must be one of: %(values)s."
+msgstr "Valeur invalide, doit faire partie de : %(values)s."
+
+#: venv/lib/python3.13/site-packages/wtforms/validators.py:629
+#, python-format
+msgid "Invalid value, can't be any of: %(values)s."
+msgstr "Valeur invalide, ne peut pas faire partie de : %(values)s."
+
+#: venv/lib/python3.13/site-packages/wtforms/validators.py:698
+msgid "This field cannot be edited"
+msgstr "Ce champ ne peut pas être édité"
+
+#: venv/lib/python3.13/site-packages/wtforms/validators.py:714
+msgid "This field is disabled and cannot have a value"
+msgstr "Ce champ est désactivé et ne peut pas contenir de valeur"
+
+#: venv/lib/python3.13/site-packages/wtforms/csrf/core.py:96
+msgid "Invalid CSRF Token."
+msgstr "Jeton CSRF invalide."
+
+#: venv/lib/python3.13/site-packages/wtforms/csrf/session.py:63
+msgid "CSRF token missing."
+msgstr "Jeton CSRF manquant."
+
+#: venv/lib/python3.13/site-packages/wtforms/csrf/session.py:71
+msgid "CSRF failed."
+msgstr "Échec CSRF."
+
+#: venv/lib/python3.13/site-packages/wtforms/csrf/session.py:76
+msgid "CSRF token expired."
+msgstr "Jeton CSRF expiré."
+
+#: venv/lib/python3.13/site-packages/wtforms/fields/choices.py:142
+msgid "Invalid Choice: could not coerce."
+msgstr "Choix invalide : conversion impossible."
+
+#: venv/lib/python3.13/site-packages/wtforms/fields/choices.py:149
+#: venv/lib/python3.13/site-packages/wtforms/fields/choices.py:203
+msgid "Choices cannot be None."
+msgstr "Les choix ne peuvent pas être nuls (None)."
+
+#: venv/lib/python3.13/site-packages/wtforms/fields/choices.py:155
+msgid "Not a valid choice."
+msgstr "Ce choix n'est pas valide."
+
+#: venv/lib/python3.13/site-packages/wtforms/fields/choices.py:194
+msgid "Invalid choice(s): one or more data inputs could not be coerced."
+msgstr "Choix invalide(s) : impossible de convertir une ou plusieurs valeurs saisies."
+
+#: venv/lib/python3.13/site-packages/wtforms/fields/choices.py:212
+#, python-format
+msgid "'%(value)s' is not a valid choice for this field."
+msgid_plural "'%(value)s' are not valid choices for this field."
+msgstr[0] "'%(value)s' n'est pas un choix valide pour ce champ."
+msgstr[1] "'%(value)s' ne sont pas des choix valides pour ce champ."
+
+#: venv/lib/python3.13/site-packages/wtforms/fields/datetime.py:51
+msgid "Not a valid datetime value."
+msgstr "Valeur de date/heure invalide."
+
+#: venv/lib/python3.13/site-packages/wtforms/fields/datetime.py:77
+msgid "Not a valid date value."
+msgstr "Valeur de date invalide."
+
+#: venv/lib/python3.13/site-packages/wtforms/fields/datetime.py:103
+msgid "Not a valid time value."
+msgstr "Valeur d'heure invalide."
+
+#: venv/lib/python3.13/site-packages/wtforms/fields/datetime.py:148
+msgid "Not a valid week value."
+msgstr "Valeur de semaine invalide."
+
+#: venv/lib/python3.13/site-packages/wtforms/fields/numeric.py:82
+#: venv/lib/python3.13/site-packages/wtforms/fields/numeric.py:92
+msgid "Not a valid integer value."
+msgstr "Valeur entière invalide."
+
+#: venv/lib/python3.13/site-packages/wtforms/fields/numeric.py:168
+msgid "Not a valid decimal value."
+msgstr "Valeur décimale invalide."
+
+#: venv/lib/python3.13/site-packages/wtforms/fields/numeric.py:197
+msgid "Not a valid float value."
+msgstr "Valeur de type float invalide."

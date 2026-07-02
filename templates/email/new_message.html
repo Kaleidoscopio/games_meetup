@@ -1,4 +1,4 @@
-<p>Hi {{ recipient.username }},</p>
-<p>You have a new message from <strong>{{ sender.username }}</strong>{% if listing %} about <strong>{{ listing.game_name }}</strong>{% endif %} on Games Meetup.</p>
-<p>Log in to Games Meetup to read and reply.</p>
+<p>{{ _('Hi') }} {{ recipient.username }},</p>
+<p>{{ _('You have a new message from') }} <strong>{{ sender.username }}</strong>{% if listing %} {{ _('about') }} <strong>{{ listing.game_name }}</strong>{% endif %} {{ _('on Games Meetup.') }}</p>
+<p>{{ _('Log in to Games Meetup to read and reply.') }}</p>
 <p>- Games Meetup</p>

@@ -1,14 +1,14 @@
 {% extends "base.html" %}
-{% block title %}New listing - Games Meetup{% endblock %}
+{% block title %}{{ _('New listing - Games Meetup') }}{% endblock %}
 {% block content %}
 <div class="card">
-  <h2>Create a listing</h2>
+  <h2>{{ _('Create a listing') }}</h2>
   <form method="POST" novalidate>
     {{ form.hidden_tag() }}
 
     <div class="form-group">
       {{ form.game_name.label }}
-      {{ form.game_name(placeholder="e.g. Warhammer 40k, Catan, D&D one-shot...") }}
+      {{ form.game_name(placeholder="Warhammer 40k, Catan, D&D...") }}
       {% for error in form.game_name.errors %}<div class="field-error">{{ error }}</div>{% endfor %}
     </div>
 
@@ -21,7 +21,7 @@
     <div class="form-group">
       {{ form.game_time.label }}
       {{ form.game_time() }}
-      <p class="help-text">24-hour format, e.g. 19:30</p>
+      <p class="help-text">{{ _('24-hour format, e.g. 19:30') }}</p>
       {% for error in form.game_time.errors %}<div class="field-error">{{ error }}</div>{% endfor %}
     </div>
 
@@ -33,15 +33,15 @@
     <div class="form-group" id="shop-field">
       {{ form.shop_id.label }}
       {{ form.shop_id() }}
-      <p class="help-text">Don't see your shop? Ask an admin to add it, or switch to a personalized location.</p>
+      <p class="help-text">{{ _("Don't see your shop? Ask an admin to add it, or switch to a personalized location.") }}</p>
     </div>
 
     <div class="form-group" id="free-field">
       {{ form.free_location_text.label }}
-      {{ form.free_location_text(placeholder="e.g. Online (Discord), or a street address") }}
+      {{ form.free_location_text(placeholder=_("e.g. Online (Discord), or a street address")) }}
 
       {{ form.region.label }}
-      {{ form.region(placeholder="e.g. Lisbon, Online") }}
+      {{ form.region(placeholder=_("e.g. Lisbon, Online")) }}
     </div>
 
     <div class="form-group">
@@ -52,7 +52,7 @@
 
     <div class="form-group">
       {{ form.notes.label }}
-      {{ form.notes(placeholder="Any extra details players should know") }}
+      {{ form.notes(placeholder=_("Any extra details players should know")) }}
     </div>
 
     {{ form.submit(class_="btn btn-primary") }}

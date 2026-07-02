@@ -59,6 +59,56 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 12px; }
 .topbar .brand { font-weight: 700; font-size: 1.15rem; color: white; }
 .topbar .brand span { color: var(--color-accent); }
 
+/* --- Top bar brand + language switcher ---------------------------------
+   .topbar-brand-group wraps the brand link and the language switcher so
+   they sit inline together on the left side of the top bar. The select
+   itself needs !important on the visual properties because the generic
+   `select` rule below (in Forms) targets every <select> on the page at
+   equal specificity - without !important the two rules race and which
+   one wins depends on build/minify order, not source order. */
+.topbar-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lang-switcher-topbar {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.lang-switcher-topbar .lang-icon {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  line-height: 1;
+}
+.lang-switcher-topbar select {
+  width: auto !important;
+  padding: 1px 16px 1px 4px !important;
+  font-size: 0.68rem !important;
+  border: none !important;
+  border-radius: 4px !important;
+  background-color: transparent !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(255,255,255,0.7) 50%),
+    linear-gradient(135deg, rgba(255,255,255,0.7) 50%, transparent 50%);
+  background-position: calc(100% - 8px) 55%, calc(100% - 4px) 55%;
+  background-size: 4px 4px, 4px 4px;
+  background-repeat: no-repeat;
+}
+.lang-switcher-topbar select:hover,
+.lang-switcher-topbar select:focus {
+  color: white !important;
+}
+.lang-switcher-topbar select option {
+  color: var(--color-text);
+  background: white;
+}
+
 /* --- Bottom nav (mobile) --------------------------------------------- */
 .bottom-nav {
   position: fixed;
@@ -183,4 +233,42 @@ th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid #eee; }
   .topbar-nav { display: flex; gap: 18px; }
   .topbar-nav a { color: white; font-size: 0.95rem; }
   .btn { width: auto; }
+}
+
+/* --- Footer --------------------------------------------------------- */
+.site-footer {
+  text-align: center;
+  padding: 24px var(--spacing) 12px;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+}
+.site-footer p { margin: 4px 0; }
+.site-footer a { color: var(--color-muted); text-decoration: underline; }
+
+/* --- Nav badges (unread messages) -------------------------------------- */
+.icon-wrap { position: relative; display: inline-block; }
+.nav-badge {
+  position: absolute;
+  top: -4px;
+  right: -9px;
+  background: var(--color-danger);
+  color: white;
+  font-size: 0.62rem;
+  font-weight: 700;
+  border-radius: 999px;
+  min-width: 15px;
+  height: 15px;
+  line-height: 15px;
+  text-align: center;
+  padding: 0 3px;
+}
+.nav-badge-inline {
+  background: var(--color-danger);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 1px 6px;
+  margin-left: 3px;
+  vertical-align: middle;
 }

@@ -26,7 +26,8 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(255), nullable=False)
     is_admin = db.Column(db.Boolean, default=False, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
-
+    locale = db.Column(db.String(5), nullable=True)  # e.g. "pt", "es" - None = use browser/session default
+    
     # Password-reset support: a random single-use token with an
     # expiry time. Cleared out again once used.
     reset_token = db.Column(db.String(64), unique=True, nullable=True)
