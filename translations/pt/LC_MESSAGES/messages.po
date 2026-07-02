@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Games Meetup 1.0\n"
 "Report-Msgid-Bugs-To: gamesmeetuppt@gmail.com\n"
-"POT-Creation-Date: 2026-07-02 18:47+0100\n"
+"POT-Creation-Date: 2026-07-02 20:11+0100\n"
 "PO-Revision-Date: 2026-07-02 16:00+0100\n"
 "Last-Translator: Daniel Almeida <gamesmeetuppt@gmail.com>\n"
 "Language: pt\n"
@@ -114,7 +114,6 @@ msgid "Region"
 msgstr "Região"
 
 #: forms.py:80
-#, python-format
 msgid "Players required"
 msgstr "Jogadores necessários"
 
@@ -171,9 +170,17 @@ msgid "Hobby shop added."
 msgstr "Loja de jogos adicionada."
 
 #: blueprints/admin.py:80
-#, python-brace-format
-msgid "{shop.name} is now {'active' if shop.active else 'inactive'}."
-msgstr "{shop.name} está {'activa' if shop.active else 'inactiva'}."
+#, python-format
+msgid "%(shop_name)s is now %(status)s."
+msgstr "%(shop_name)s está agora %(status)s."
+
+#: blueprints/admin.py:80
+msgid "active"
+msgstr "ativa"
+
+#: blueprints/admin.py:80
+msgid "inactive"
+msgstr "inativa"
 
 #: blueprints/admin.py:90
 msgid "Can't delete a shop that has listings - deactivate it instead."
@@ -185,12 +192,12 @@ msgstr "Loja de jogos apagada."
 
 #: blueprints/admin.py:114
 msgid "You can't change your own admin status."
-msgstr "Não podes mudar o teu próprio estatuto."
+msgstr "Não podes mudar o teu próprio estatuto de administrador."
 
 #: blueprints/admin.py:118
-#, python-brace-format
-msgid "{user.username} admin status: {user.is_admin}."
-msgstr "{user.username} estado admnistrador: {user.is_admin}."
+#, python-format
+msgid "%(username)s admin status: %(is_admin)s."
+msgstr "Estado de administrador de %(username)s: %(is_admin)s."
 
 #: blueprints/admin.py:128
 msgid "You can't delete your own account from here."
@@ -225,9 +232,9 @@ msgid "Invalid email or password."
 msgstr "Endereço de e-mail ou palavra passe inválidos."
 
 #: blueprints/auth.py:75
-#, python-brace-format
-msgid "Welcome back, {user.username}!"
-msgstr "Bem vindo, {user.username}!"
+#, python-format
+msgid "Welcome back, %(username)s!"
+msgstr "Bem vindo, %(username)s!"
 
 #: blueprints/auth.py:87
 msgid "You have been logged out."
@@ -335,7 +342,7 @@ msgstr "Os meus jogos"
 
 #: templates/base.html:74
 msgid "built by Daniel Almeida"
-msgstr "desarrolado por Daniel Almeida"
+msgstr "desenvolvido por Daniel Almeida"
 
 #: templates/base.html:77
 msgid "Contact the admin"
@@ -526,7 +533,7 @@ msgstr ""
 
 #: templates/auth/forgot_password.html:16
 msgid "Back to login"
-msgstr "Volver ao início de sessão"
+msgstr "Voltar ao início de sessão"
 
 #: templates/auth/login.html:2
 msgid "Log in - Games Meetup"
@@ -845,6 +852,26 @@ msgstr "Escreve a tua mensagem..."
 #: utils/email_utils.py:46
 msgid "Reset your Games Meetup password"
 msgstr "Repor a tua palavra-passe do Games Meetup"
+
+#: utils/email_utils.py:55
+#, python-brace-format
+msgid "Your game '{game_name}' is confirmed"
+msgstr "O teu jogo '{game_name}' está confirmado"
+
+#: utils/email_utils.py:57
+#, python-brace-format
+msgid "Listing '{game_name}' was automatically closed"
+msgstr "O anúncio '{game_name}' foi fechado automaticamente"
+
+#: utils/email_utils.py:69
+#, python-brace-format
+msgid "New player joined '{game_name}'"
+msgstr "Um novo jogador juntou-se a '{game_name}'"
+
+#: utils/email_utils.py:75
+#, python-brace-format
+msgid "New message from {username} on Games Meetup"
+msgstr "Nova mensagem de {username} no Games Meetup"
 
 #: utils/ics_utils.py:26
 #, python-format
@@ -1384,7 +1411,9 @@ msgstr "Não é uma escolha válida."
 
 #: venv/lib/python3.13/site-packages/wtforms/fields/choices.py:194
 msgid "Invalid choice(s): one or more data inputs could not be coerced."
-msgstr "Escolha(s) inválida(s): não foi possível converter um ou mais dados introduzidos."
+msgstr ""
+"Escolha(s) inválida(s): não foi possível converter um ou mais dados "
+"introduzidos."
 
 #: venv/lib/python3.13/site-packages/wtforms/fields/choices.py:212
 #, python-format

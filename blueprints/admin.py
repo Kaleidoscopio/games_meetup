@@ -77,7 +77,7 @@ def toggle_shop(shop_id):
     shop = HobbyShop.query.get_or_404(shop_id)
     shop.active = not shop.active
     db.session.commit()
-    flash(_("{shop.name} is now {'active' if shop.active else 'inactive'}."), "info")
+    flash(_("%(shop_name)s is now %(status)s.", shop_name=shop.name, status=_("active") if shop.active else _("inactive")), "info")
     return redirect(url_for("admin.shops"))
 
 
@@ -115,7 +115,7 @@ def toggle_admin(user_id):
         return redirect(url_for("admin.users"))
     user.is_admin = not user.is_admin
     db.session.commit()
-    flash(_("{user.username} admin status: {user.is_admin}."), "info")
+    flash(_("%(username)s admin status: %(is_admin)s.", username=user.username, is_admin=user.is_admin), "info")
     return redirect(url_for("admin.users"))
 
 

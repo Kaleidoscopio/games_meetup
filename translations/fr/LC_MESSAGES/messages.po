@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Games Meetup 1.0\n"
 "Report-Msgid-Bugs-To: gamesmeetuppt@gmail.com\n"
-"POT-Creation-Date: 2026-07-02 18:47+0100\n"
+"POT-Creation-Date: 2026-07-02 20:11+0100\n"
 "PO-Revision-Date: 2026-07-02 16:00+0100\n"
 "Last-Translator: Daniel Almeida <gamesmeetuppt@gmail.com>\n"
 "Language: fr\n"
@@ -114,7 +114,6 @@ msgid "Region"
 msgstr "Région"
 
 #: forms.py:80
-#, python-format
 msgid "Players required"
 msgstr "Joueurs requis"
 
@@ -171,9 +170,17 @@ msgid "Hobby shop added."
 msgstr "Boutique de jeux ajoutée."
 
 #: blueprints/admin.py:80
-#, python-brace-format
-msgid "{shop.name} is now {'active' if shop.active else 'inactive'}."
-msgstr "{shop.name} est maintenant {'active' if shop.active else 'inactive'}."
+#, python-format
+msgid "%(shop_name)s is now %(status)s."
+msgstr "%(shop_name)s est maintenant %(status)s."
+
+#: blueprints/admin.py:80
+msgid "active"
+msgstr "active"
+
+#: blueprints/admin.py:80
+msgid "inactive"
+msgstr "inactive"
 
 #: blueprints/admin.py:90
 msgid "Can't delete a shop that has listings - deactivate it instead."
@@ -190,9 +197,9 @@ msgid "You can't change your own admin status."
 msgstr "Vous ne pouvez pas modifier votre propre statut d'administrateur."
 
 #: blueprints/admin.py:118
-#, python-brace-format
-msgid "{user.username} admin status: {user.is_admin}."
-msgstr "Statut admin de {user.username} : {user.is_admin}."
+#, python-format
+msgid "%(username)s admin status: %(is_admin)s."
+msgstr "Statut admin de %(username)s : %(is_admin)s."
 
 #: blueprints/admin.py:128
 msgid "You can't delete your own account from here."
@@ -227,9 +234,9 @@ msgid "Invalid email or password."
 msgstr "Adresse e-mail ou mot de passe invalide."
 
 #: blueprints/auth.py:75
-#, python-brace-format
-msgid "Welcome back, {user.username}!"
-msgstr "Bon retour, {user.username} !"
+#, python-format
+msgid "Welcome back, %(username)s!"
+msgstr "Bon retour, %(username)s!"
 
 #: blueprints/auth.py:87
 msgid "You have been logged out."
@@ -245,7 +252,7 @@ msgstr "Ce lien de réinitialisation de mot de passe est invalide ou a expiré."
 
 #: blueprints/auth.py:122
 msgid "Your password has been reset. Please log in."
-msgstr "Votre mot de passe a été réinitialiser. Veuillez vous connecter."
+msgstr "Votre mot de passe a été réinitialisé. Veuillez vous connecter."
 
 #: blueprints/listings.py:28
 msgid "-- select a shop --"
@@ -848,6 +855,26 @@ msgstr "Écrivez votre message..."
 msgid "Reset your Games Meetup password"
 msgstr "Réinitialiser votre mot de passe Games Meetup"
 
+#: utils/email_utils.py:55
+#, python-brace-format
+msgid "Your game '{game_name}' is confirmed"
+msgstr "Votre partie '{game_name}' est confirmée"
+
+#: utils/email_utils.py:57
+#, python-brace-format
+msgid "Listing '{game_name}' was automatically closed"
+msgstr "L'annonce '{game_name}' a été clôturée automatiquement"
+
+#: utils/email_utils.py:69
+#, python-brace-format
+msgid "New player joined '{game_name}'"
+msgstr "Un nouveau joueur a rejoint '{game_name}'"
+
+#: utils/email_utils.py:75
+#, python-brace-format
+msgid "New message from {username} on Games Meetup"
+msgstr "Nouveau message de {username} sur Games Meetup"
+
 #: utils/ics_utils.py:26
 #, python-format
 msgid "Organised via Games Meetup by %(username)s."
@@ -1369,10 +1396,6 @@ msgstr "Échec CSRF."
 msgid "CSRF token expired."
 msgstr "Jeton CSRF expiré."
 
-#: venv/lib/python3.13/site-packages/wtforms/csrf/core.py:96
-msgid "Invalid CSRF Token."
-msgstr "Jeton CSRF invalide."
-
 #: venv/lib/python3.13/site-packages/wtforms/fields/choices.py:142
 msgid "Invalid Choice: could not coerce."
 msgstr "Choix invalide : conversion impossible."
@@ -1388,7 +1411,9 @@ msgstr "Ce choix n'est pas valide."
 
 #: venv/lib/python3.13/site-packages/wtforms/fields/choices.py:194
 msgid "Invalid choice(s): one or more data inputs could not be coerced."
-msgstr "Choix invalide(s) : impossible de convertir une ou plusieurs valeurs saisies."
+msgstr ""
+"Choix invalide(s) : impossible de convertir une ou plusieurs valeurs "
+"saisies."
 
 #: venv/lib/python3.13/site-packages/wtforms/fields/choices.py:212
 #, python-format

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Games Meetup 1.0\n"
 "Report-Msgid-Bugs-To: gamesmeetuppt@gmail.com\n"
-"POT-Creation-Date: 2026-07-02 18:47+0100\n"
+"POT-Creation-Date: 2026-07-02 20:11+0100\n"
 "PO-Revision-Date: 2026-07-02 16:00+0100\n"
 "Last-Translator: Daniel Almeida <gamesmeetuppt@gmail.com>\n"
 "Language: es\n"
@@ -114,7 +114,6 @@ msgid "Region"
 msgstr "Región"
 
 #: forms.py:80
-#, python-format
 msgid "Players required"
 msgstr "Jugadores necesarios"
 
@@ -171,9 +170,17 @@ msgid "Hobby shop added."
 msgstr "Tienda de juegos añadida."
 
 #: blueprints/admin.py:80
-#, python-brace-format
-msgid "{shop.name} is now {'active' if shop.active else 'inactive'}."
-msgstr "{shop.name} ahora está {'activa' if shop.active else 'inactiva'}."
+#, python-format
+msgid "%(shop_name)s is now %(status)s."
+msgstr "%(shop_name)s está ahora %(status)s."
+
+#: blueprints/admin.py:80
+msgid "active"
+msgstr "activa"
+
+#: blueprints/admin.py:80
+msgid "inactive"
+msgstr "inactiva"
 
 #: blueprints/admin.py:90
 msgid "Can't delete a shop that has listings - deactivate it instead."
@@ -190,9 +197,9 @@ msgid "You can't change your own admin status."
 msgstr "No puedes cambiar tu propio estado de administrador."
 
 #: blueprints/admin.py:118
-#, python-brace-format
-msgid "{user.username} admin status: {user.is_admin}."
-msgstr "Estado de administrador de {user.username}: {user.is_admin}."
+#, python-format
+msgid "%(username)s admin status: %(is_admin)s."
+msgstr "Estado de administrador de %(username)s: %(is_admin)s."
 
 #: blueprints/admin.py:128
 msgid "You can't delete your own account from here."
@@ -227,9 +234,9 @@ msgid "Invalid email or password."
 msgstr "Correo electrónico o contraseña inválidos."
 
 #: blueprints/auth.py:75
-#, python-brace-format
-msgid "Welcome back, {user.username}!"
-msgstr "¡Bienvenido de nuevo, {user.username}!"
+#, python-format
+msgid "Welcome back, %(username)s!"
+msgstr "¡Bienvenido de nuevo, %(username)s!"
 
 #: blueprints/auth.py:87
 msgid "You have been logged out."
@@ -855,6 +862,26 @@ msgstr "Escribe tu mensaje..."
 #: utils/email_utils.py:46
 msgid "Reset your Games Meetup password"
 msgstr "Restablecer tu contraseña de Games Meetup"
+
+#: utils/email_utils.py:55
+#, python-brace-format
+msgid "Your game '{game_name}' is confirmed"
+msgstr "Tu partida '{game_name}' está confirmada"
+
+#: utils/email_utils.py:57
+#, python-brace-format
+msgid "Listing '{game_name}' was automatically closed"
+msgstr "El anuncio '{game_name}' se ha cerrado automáticamente"
+
+#: utils/email_utils.py:69
+#, python-brace-format
+msgid "New player joined '{game_name}'"
+msgstr "Un nuevo jugador se ha unido a '{game_name}'"
+
+#: utils/email_utils.py:75
+#, python-brace-format
+msgid "New message from {username} on Games Meetup"
+msgstr "Nuevo mensaje de {username} en Games Meetup"
 
 #: utils/ics_utils.py:26
 #, python-format

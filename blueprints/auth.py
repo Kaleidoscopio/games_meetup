@@ -72,7 +72,7 @@ def login():
 
         remember = bool(request.form.get("remember_me"))
         login_user(user, remember=remember)
-        flash(_("Welcome back, {user.username}!"), "success")
+        flash(_("Welcome back, %(username)s!", username=user.username), "success")
 
         next_page = request.args.get("next")
         return redirect(next_page or url_for("listings.browse"))
