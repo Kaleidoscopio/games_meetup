@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>{% block title %}Games Meetup{% endblock %}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  {% block head %}{% endblock %}
 </head>
 <body>
 
@@ -34,6 +35,18 @@
     </nav>
     {% endif %}
   </header>
+
+  {% if active_maintenance_banners %}
+  <div class="maintenance-banners">
+    {% for banner in active_maintenance_banners %}
+    <div class="maintenance-banner" data-banner-id="{{ banner.id }}-{{ (banner.message ~ banner.starts_at.isoformat() ~ banner.ends_at.isoformat()) }}">
+      <span class="maintenance-banner-icon" aria-hidden="true">🛠️</span>
+      <span class="maintenance-banner-text">{{ banner.message }}</span>
+      <button type="button" class="maintenance-banner-dismiss" aria-label="{{ _('Dismiss') }}" onclick="dismissMaintenanceBanner(this)">&times;</button>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
 
   <main class="container">
     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -89,6 +102,34 @@
         link.href = "mailto:" + user + "@" + domain;
       }
     })();
+
+    // Maintenance banners: once dismissed, stay hidden for the rest of
+    // the browser session (they'll reappear on the next visit, and
+    // disappear for everyone on their own once the time window ends).
+    (function () {
+      var dismissed = [];
+      try {
+        dismissed = JSON.parse(sessionStorage.getItem("dismissedMaintenanceBanners") || "[]");
+      } catch (e) { dismissed = []; }
+      document.querySelectorAll(".maintenance-banner").forEach(function (el) {
+        if (dismissed.indexOf(el.dataset.bannerId) !== -1) {
+          el.style.display = "none";
+        }
+      });
+    })();
+
+    function dismissMaintenanceBanner(button) {
+      var el = button.closest(".maintenance-banner");
+      if (!el) return;
+      el.style.display = "none";
+      try {
+        var dismissed = JSON.parse(sessionStorage.getItem("dismissedMaintenanceBanners") || "[]");
+        if (dismissed.indexOf(el.dataset.bannerId) === -1) {
+          dismissed.push(el.dataset.bannerId);
+          sessionStorage.setItem("dismissedMaintenanceBanners", JSON.stringify(dismissed));
+        }
+      } catch (e) { /* sessionStorage unavailable - dismiss just won't persist */ }
+    }
   </script>
 </body>
 </html>

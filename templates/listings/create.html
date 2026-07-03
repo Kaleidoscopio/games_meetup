@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% block title %}{{ _('New listing - Games Meetup') }}{% endblock %}
+{% block head %}{{ super() }}
+<script src="{{ url_for('static', filename='js/time-mask.js') }}" defer></script>
+{% endblock %}
 {% block content %}
 <div class="card">
   <h2>{{ _('Create a listing') }}</h2>

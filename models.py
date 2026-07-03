@@ -178,6 +178,36 @@ class Enrollment(db.Model):
         return f"<Enrollment user={self.user_id} listing={self.listing_id}>"
 
 
+class MaintenanceBanner(db.Model):
+    """
+    A site-wide notice an admin schedules ahead of time (e.g. a
+    database update or server restart). It only shows up on the site
+    between `starts_at` and `ends_at` - no manual "turn it off"
+    step needed once the window passes.
+    """
+
+    __tablename__ = "maintenance_banners"
+    __table_args__ = {"sqlite_autoincrement": True}
+
+    id = db.Column(db.Integer, primary_key=True)
+    message = db.Column(db.String(500), nullable=False)
+
+    starts_at = db.Column(db.DateTime, nullable=False, index=True)
+    ends_at = db.Column(db.DateTime, nullable=False, index=True)
+
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    created_by_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=True)
+
+    created_by = db.relationship("User")
+
+    def is_active(self, at: datetime = None) -> bool:
+        at = at or datetime.utcnow()
+        return self.starts_at <= at <= self.ends_at
+
+    def __repr__(self):
+        return f"<MaintenanceBanner {self.starts_at}\u2013{self.ends_at}>"
+
+
 class Message(db.Model):
     """A single direct message between two users, optionally linked to a listing."""
 

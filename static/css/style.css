@@ -201,8 +201,36 @@ textarea { min-height: 90px; resize: vertical; }
 .badge-open { background: #e8f5e9; color: var(--color-success); }
 .badge-closed { background: #eceff1; color: var(--color-muted); }
 .badge-full { background: #fff3e0; color: var(--color-accent); }
+.badge-active { background: #fff8e1; color: var(--color-warning); }
+.badge-upcoming { background: #e3f2fd; color: var(--color-info); }
+.badge-past { background: #eceff1; color: var(--color-muted); }
 .meta-row { color: var(--color-muted); font-size: 0.87rem; margin: 3px 0; }
 .meta-row .icon { margin-right: 4px; }
+
+/* --- Maintenance banners ---------------------------------------------------- */
+.maintenance-banners { position: sticky; top: 0; z-index: 9; }
+.maintenance-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff3cd;
+  color: #7a5c00;
+  padding: 10px var(--spacing);
+  font-size: 0.87rem;
+  border-bottom: 1px solid #f0d98c;
+}
+.maintenance-banner-icon { flex-shrink: 0; }
+.maintenance-banner-text { flex: 1; }
+.maintenance-banner-dismiss {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+  flex-shrink: 0;
+}
 
 /* --- Message bubbles -------------------------------------------------------- */
 .msg-bubble { max-width: 80%; padding: 10px 14px; border-radius: 14px; margin-bottom: 8px; font-size: 0.92rem; }

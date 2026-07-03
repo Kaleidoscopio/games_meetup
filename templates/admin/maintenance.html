@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}{{ _('Maintenance banners - Admin') }}{% endblock %}
+{% block content %}
+<h2>{{ _('Maintenance banners') }}</h2>
+
+<div class="card">
+  <h3>{{ _('Schedule a banner') }}</h3>
+  <p class="help-text">
+    {{ _('The message shows up on every page while the current time is between "Starts at" and "Ends at", then disappears on its own - no need to come back and turn it off. Enter times in your local timezone (Europe/Lisbon) - they are converted to server time automatically.') }}
+  </p>
+  <form method="POST" novalidate>
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      {{ form.message.label }}
+      {{ form.message() }}
+      {% for error in form.message.errors %}<div class="field-error">{{ error }}</div>{% endfor %}
+    </div>
+    <div class="form-group">
+      {{ form.starts_at.label }}
+      {{ form.starts_at() }}
+      {% for error in form.starts_at.errors %}<div class="field-error">{{ error }}</div>{% endfor %}
+    </div>
+    <div class="form-group">
+      {{ form.ends_at.label }}
+      {{ form.ends_at() }}
+      {% for error in form.ends_at.errors %}<div class="field-error">{{ error }}</div>{% endfor %}
+    </div>
+    {{ form.submit(class_="btn btn-primary") }}
+  </form>
+</div>
+
+<div class="card table-scroll">
+  <h3>{{ _('All banners') }}</h3>
+  {% if banners %}
+  <table>
+    <tr>
+      <th>{{ _('Message') }}</th>
+      <th>{{ _('Starts at') }}</th>
+      <th>{{ _('Ends at') }}</th>
+      <th>{{ _('Status') }}</th>
+      <th></th>
+    </tr>
+    {% for banner in banners %}
+    <tr>
+      <td>{{ banner.message }}</td>
+      <td>{{ banner.starts_at.strftime('%Y-%m-%d %H:%M') }}</td>
+      <td>{{ banner.ends_at.strftime('%Y-%m-%d %H:%M') }}</td>
+      <td>
+        {% if banner.starts_at <= now <= banner.ends_at %}
+          <span class="badge badge-active">{{ _('Active now') }}</span>
+        {% elif now < banner.starts_at %}
+          <span class="badge badge-upcoming">{{ _('Upcoming') }}</span>
+        {% else %}
+          <span class="badge badge-past">{{ _('Past') }}</span>
+        {% endif %}
+      </td>
+      <td>
+        <form method="POST" action="{{ url_for('admin.delete_banner', banner_id=banner.id) }}" style="display:inline;"
+              onsubmit="return confirm('{{ _('Are you sure you want to delete this banner?') }}');">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <button type="submit" class="btn btn-small btn-danger">{{ _('Delete') }}</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="help-text">{{ _('No maintenance banners yet.') }}</p>
+  {% endif %}
+</div>
+{% endblock %}

@@ -91,11 +91,19 @@ def create_app(config_class=Config):
             unread_count = Message.query.filter_by(
                 recipient_id=current_user.id, read_at=None
             ).count()
+
+        from models import MaintenanceBanner
+        now = datetime.utcnow()
+        active_maintenance_banners = MaintenanceBanner.query.filter(
+            MaintenanceBanner.starts_at <= now, MaintenanceBanner.ends_at >= now
+        ).order_by(MaintenanceBanner.ends_at.asc()).all()
+
         return {
             "current_year": datetime.utcnow().year, 
             "unread_message_count": unread_count,
             "available_languages": app.config["LANGUAGES"],
             "get_locale": get_locale,
+            "active_maintenance_banners": active_maintenance_banners,
         }
 
     # --- Error pages ------------------------------------------------------

@@ -11,7 +11,8 @@ from wtforms import (
     StringField, PasswordField, IntegerField, SelectField, TextAreaField,
     DateField, TimeField, SubmitField, HiddenField, BooleanField,
 )
-from wtforms.validators import DataRequired, Email, Length, EqualTo, NumberRange, Optional
+from wtforms.fields import DateTimeLocalField
+from wtforms.validators import DataRequired, Email, Length, EqualTo, NumberRange, Optional, ValidationError
 from wtforms.widgets import TextInput
 from flask_babel import lazy_gettext as _l
 
@@ -63,7 +64,11 @@ class ListingForm(FlaskForm):
         format="%H:%M",
         widget=TextInput(),
         validators=[DataRequired()],
-        render_kw={"placeholder": _l("HH:MM (24-hour)"), "inputmode": "numeric"},
+        render_kw={
+            "placeholder": _l("HH:MM (24-hour)"),
+            "inputmode": "numeric",
+            "data-mask": "time",
+        },
     )
 
     # "shop" = pick from the pre-defined Hobby Shop list, "free" = type your own.
@@ -99,3 +104,28 @@ class HobbyShopForm(FlaskForm):
     address = StringField(_l("Address"), validators=[Optional(), Length(max=255)])
     active = SelectField(_l("Active"), choices=[("1", _l("Yes")), ("0", _l("No"))], default="1")
     submit = SubmitField(_l("Save shop"))
+
+
+class MaintenanceBannerForm(FlaskForm):
+    """
+    Lets an admin schedule a site-wide notice (e.g. "DB update tonight
+    22:00-23:00") that only shows up on the site during the chosen
+    time window, then disappears automatically - no manual clean-up.
+    """
+
+    message = TextAreaField(
+        _l("Banner message"),
+        validators=[DataRequired(), Length(max=500)],
+        render_kw={"placeholder": _l("e.g. Scheduled database maintenance tonight, the site may be briefly unavailable.")},
+    )
+    starts_at = DateTimeLocalField(
+        _l("Starts at"), format="%Y-%m-%dT%H:%M", validators=[DataRequired()]
+    )
+    ends_at = DateTimeLocalField(
+        _l("Ends at"), format="%Y-%m-%dT%H:%M", validators=[DataRequired()]
+    )
+    submit = SubmitField(_l("Publish banner"))
+
+    def validate_ends_at(self, field):
+        if self.starts_at.data and field.data and field.data <= self.starts_at.data:
+            raise ValidationError(_l("End time must be after the start time."))

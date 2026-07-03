@@ -9,6 +9,7 @@
   <div class="stat-box"><div class="num">{{ stats.listings_closed }}</div><div class="label">{{ _('Closed listings') }}</div></div>
   <div class="stat-box"><div class="num">{{ stats.shops }}</div><div class="label">{{ _('Hobby shops') }}</div></div>
   <div class="stat-box"><div class="num">{{ stats.messages }}</div><div class="label">{{ _('Messages sent') }}</div></div>
+  <div class="stat-box"><div class="num">{{ stats.maintenance_active }}</div><div class="label">{{ _('Active banners') }}</div></div>
 </div>
 
 <div class="card">
@@ -17,6 +18,7 @@
     <a class="btn btn-secondary" href="{{ url_for('admin.shops') }}">{{ _('Manage hobby shops') }}</a>
     <a class="btn btn-secondary" href="{{ url_for('admin.users') }}">{{ _('Manage users') }}</a>
     <a class="btn btn-secondary" href="{{ url_for('admin.listings') }}">{{ _('Manage listings') }}</a>
+    <a class="btn btn-secondary" href="{{ url_for('admin.maintenance') }}">{{ _('Manage maintenance banners') }}</a>
   </div>
 </div>
 

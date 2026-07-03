@@ -11,14 +11,25 @@ which keeps the app light and cheap to run.
 
 from functools import wraps
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
-from flask import Blueprint, render_template, redirect, url_for, flash, abort, request
+from flask import Blueprint, render_template, redirect, url_for, flash, abort, request, current_app
 from flask_login import login_required, current_user
 from flask_babel import _
 
 from extensions import db
-from models import User, HobbyShop, Listing, Message
-from forms import HobbyShopForm
+from models import User, HobbyShop, Listing, Message, MaintenanceBanner
+from forms import HobbyShopForm, MaintenanceBannerForm
+
+
+def _local_to_utc(naive_dt):
+    """Interpret a naive datetime from a datetime-local form field as
+    being in the apps configured admin timezone, then convert it to a
+    naive UTC datetime for storage, matching what datetime.utcnow()
+    produces since that is what banners get compared against."""
+    tz = ZoneInfo(current_app.config.get("ADMIN_INPUT_TIMEZONE", "UTC"))
+    aware_local = naive_dt.replace(tzinfo=tz)
+    return aware_local.astimezone(ZoneInfo("UTC")).replace(tzinfo=None)
 
 admin_bp = Blueprint("admin", __name__, url_prefix="/admin")
 
@@ -37,12 +48,16 @@ def admin_required(view_func):
 @login_required
 @admin_required
 def dashboard():
+    now = datetime.utcnow()
     stats = {
         "users": User.query.count(),
         "listings_open": Listing.query.filter_by(status=Listing.STATUS_OPEN).count(),
         "listings_closed": Listing.query.filter(Listing.status != Listing.STATUS_OPEN).count(),
         "shops": HobbyShop.query.count(),
         "messages": Message.query.count(),
+        "maintenance_active": MaintenanceBanner.query.filter(
+            MaintenanceBanner.starts_at <= now, MaintenanceBanner.ends_at >= now
+        ).count(),
     }
     return render_template("admin/dashboard.html", stats=stats)
 
@@ -164,3 +179,41 @@ def delete_listing(listing_id):
     db.session.commit()
     flash(_("Listing deleted."), "info")
     return redirect(url_for("admin.listings"))
+
+
+# --- Maintenance banner maintenance (yes, really) ------------------------------
+# Site-wide notices for planned downtime (DB updates, server restarts, etc.)
+# scoped to a start/end time, so they show up on every page while the
+# window is active and disappear on their own afterwards.
+
+@admin_bp.route("/maintenance", methods=["GET", "POST"])
+@login_required
+@admin_required
+def maintenance():
+    form = MaintenanceBannerForm()
+    if form.validate_on_submit():
+        banner = MaintenanceBanner(
+            message=form.message.data.strip(),
+            starts_at=_local_to_utc(form.starts_at.data),
+            ends_at=_local_to_utc(form.ends_at.data),
+            created_by_id=current_user.id,
+        )
+        db.session.add(banner)
+        db.session.commit()
+        flash(_("Maintenance banner scheduled."), "success")
+        return redirect(url_for("admin.maintenance"))
+
+    now = datetime.utcnow()
+    all_banners = MaintenanceBanner.query.order_by(MaintenanceBanner.starts_at.desc()).all()
+    return render_template("admin/maintenance.html", form=form, banners=all_banners, now=now)
+
+
+@admin_bp.route("/maintenance/<int:banner_id>/delete", methods=["POST"])
+@login_required
+@admin_required
+def delete_banner(banner_id):
+    banner = MaintenanceBanner.query.get_or_404(banner_id)
+    db.session.delete(banner)
+    db.session.commit()
+    flash(_("Maintenance banner deleted."), "info")
+    return redirect(url_for("admin.maintenance"))
