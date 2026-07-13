@@ -66,7 +66,6 @@ def create_app(config_class=Config):
     @app.route("/")
     def index():
         if current_user.is_authenticated:
-            from flask import redirect, url_for
             return redirect(url_for("listings.browse"))
         return render_template("index.html")
 
