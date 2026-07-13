@@ -31,24 +31,24 @@ API.
 games_meetup/
 ├── app.py                   # App factory + entry point
 ├── config.py                # Config from environment variables
-├── extensions.py            # Shared Flask extension instances
-├── models.py                # SQLAlchemy models (User, Listing, etc.)
+├── extensions.py            # Shared Flask extension instances (SQLAlchemy, LoginManager, Mail, etc)
+├── models.py                # Database models
 ├── forms.py                 # WTForms form classes
 ├── seed_shops.py            # Optional: pre-populate sample hobby shops
 ├── requirements.txt
-├── .env.example              # Copy to .env and fill in real values
-├── blueprints/
+├── .env.example             # Copy to .env and fill in real values
+├── blueprints/              # Business functionality
 │   ├── auth.py               # register / login / password recovery
 │   ├── listings.py           # create / browse / enroll / close
 │   ├── messaging.py          # direct messages
-│   └── admin.py               # admin-only maintenance routes
-├── utils/
-│   ├── email_utils.py         # Flask-Mail wrapper
-│   ├── ics_utils.py            # .ics calendar file generation
-│   └── scheduler.py             # APScheduler auto-close job
-├── templates/                  # Jinja2 templates (mobile-first HTML)
-├── translations/*              # Translation files
-└── static/css/style.css         # Dependency-free, mobile-first CSS
+│   └── admin.py              # admin-only maintenance routes
+├── utils/                   # Supporting Services/Helpers
+│   ├── email_utils.py        # Flask-Mail wrapper
+│   ├── ics_utils.py          # .ics calendar file generation
+│   └── scheduler.py          # APScheduler auto-close job
+├── templates/               # Jinja2 templates (mobile-first HTML)
+├── translations/*           # Translation files - i18n
+└── static/css/style.css     # Dependency-free, mobile-first CSS
 ```
 
 
